@@ -10,9 +10,14 @@ dependencies:
 - name: pivottable
   version: 1.3.0
   src: htmlwidgets/lib/pivottable
+<<<<<<< HEAD
   stylesheet: dist/pivot.css
   script:
   - dist/pivot.js
 
 
+=======
+  script: dist/pivot.js
+  stylesheet: dist/pivot.css
+>>>>>>> FETCH_HEAD
 

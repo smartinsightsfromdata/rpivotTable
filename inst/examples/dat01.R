@@ -12,11 +12,21 @@ jsontxt <- '[ {"Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, La
 {"Province": "Ontario", "Party": "Conservative", "Age": 66, "Name": "Davidson, Patricia", "Gender": "Female"},
 {"Province": "Manitoba", "Party": "Conservative", "Age": 65, "Name": "Smith, Joy", "Gender": "Female"}]'
 
+<<<<<<< HEAD
 
+=======
+# jsontxt <- '[ {"Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, Laurin", "Gender": "Female"} ]'
+# rowcol <- '{ rows: ["Province"], cols: ["Party"] }'
+# validate(rowcol )
+>>>>>>> FETCH_HEAD
 validate(jsontxt)
 jsdf_ <- jsonlite::fromJSON(jsontxt)
 jsdf_$Age <- as.numeric(jsdf_$Age)
 
+<<<<<<< HEAD
 
 
 rpivotTable(jsdf_)
+=======
+rpivotTable(jsdata)
+>>>>>>> FETCH_HEAD
