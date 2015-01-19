@@ -6,7 +6,6 @@
 #'
 #' @export
 rpivotTable <- function(message = NULL, width = NULL, height = NULL) {
-
   # forward options using x
   x = message
 #     list(

@@ -1094,6 +1094,7 @@
               rows: []
             };
             numInputsToProcess = (_ref5 = opts.aggregators[aggregator.val()]([])().numInputs) != null ? _ref5 : 0;
+
             vals = [];
             _this.find(".pvtRows li span.pvtAttr").each(function() {
               return subopts.rows.push($(this).data("attrName"));
@@ -1133,6 +1134,7 @@
               });
               initialRender = false;
             }
+
             subopts.aggregatorName = aggregator.val();
             subopts.vals = vals;
             subopts.aggregator = opts.aggregators[aggregator.val()](vals);

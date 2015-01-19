@@ -7,7 +7,6 @@ HTMLWidgets.widget({
 
   initialize: function(el, width, height) {
 
-
     return {
       // TODO: add instance fields as required
 
@@ -20,10 +19,10 @@ HTMLWidgets.widget({
  //   console.log('x = '+JSON.stringify(x));
 
 $(function () {
-    $(el.id).pivotUI(
-x,
-  { renderers: $.extend($.pivotUtilities.renderers ) }
-);
+    $('#'+el.id).pivotUI(
+x
+
+    );
 });
 
 
