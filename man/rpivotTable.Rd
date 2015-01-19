@@ -4,7 +4,7 @@
 \alias{rpivotTable}
 \title{<Add Title>}
 \usage{
-rpivotTable(message = NULL, width = NULL, height = NULL)
+rpivotTable(df_, width = NULL, height = NULL)
 }
 \description{
 <Add Description>

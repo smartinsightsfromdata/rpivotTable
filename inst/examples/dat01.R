@@ -12,19 +12,11 @@ jsontxt <- '[ {"Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, La
 {"Province": "Ontario", "Party": "Conservative", "Age": 66, "Name": "Davidson, Patricia", "Gender": "Female"},
 {"Province": "Manitoba", "Party": "Conservative", "Age": 65, "Name": "Smith, Joy", "Gender": "Female"}]'
 
-# jsontxt <- '[ {"Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, Laurin", "Gender": "Female"} ]'
-rowcol <- '{ rows: ["Province"], cols: ["Party"] }'
-validate(rowcol )
+
 validate(jsontxt)
 jsdf_ <- jsonlite::fromJSON(jsontxt)
 jsdf_$Age <- as.numeric(jsdf_$Age)
-# jsdl1_ <- RJSONIO::fromJSON(jsontxt)
-# jsdl1_[[1]]
-jsdata <- lapply(1:nrow(jsdf_), function(i) {
-  l_ <- as.list(jsdf_[i, ])
-  return(l_)})
 
 
 
-
-rpivotTable(jsdata)
+rpivotTable(jsdf_)

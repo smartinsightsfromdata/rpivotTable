@@ -5,10 +5,12 @@
 #' @import htmlwidgets
 #'
 #' @export
-rpivotTable <- function(message = NULL, width = NULL, height = NULL) {
-
+rpivotTable <- function(df_ , width = NULL, height = NULL) {
   # forward options using x
-  x = message
+  Data <- lapply(1:nrow(df_), function(i) {
+    l_ <- as.list(df_[i, ])
+    return(l_)})
+  x = Data
 #     list(
 #     message = message
 #   )
