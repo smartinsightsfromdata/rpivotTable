@@ -5,11 +5,9 @@
 #' @import htmlwidgets
 #'
 #' @export
-<<<<<<< HEAD
+
 rpivotTable <- function(df_ , width = NULL, height = NULL) {
-=======
-rpivotTable <- function(message = NULL, width = NULL, height = NULL) {
->>>>>>> FETCH_HEAD
+
   # forward options using x
   Data <- lapply(1:nrow(df_), function(i) {
     l_ <- as.list(df_[i, ])

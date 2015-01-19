@@ -20,13 +20,8 @@ HTMLWidgets.widget({
 
 $(function () {
     $('#'+el.id).pivotUI(
-<<<<<<< HEAD
 x );
-=======
-x
 
-    );
->>>>>>> FETCH_HEAD
 });
 
 
