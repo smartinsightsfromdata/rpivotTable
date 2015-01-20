@@ -14,7 +14,7 @@ devtools::install_github(c("ramnathv/htmlwidgets", "smartinsightsfromdata/rpivot
 
 #### Usage
 
-If you have a data.frame or data.table (e.g. dt), with one column containing the labels and the other with the values (must be numeric) it is as simple as this:
+If you have a data.frame or data.table (e.g. dt), a mix of categorical and numeric columns will do (pivottable has off-the-shelf count and distinct count). It is as simple as this:
 
 ```R
 rpivotTable(dt)
