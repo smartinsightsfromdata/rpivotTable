@@ -14,10 +14,26 @@ devtools::install_github(c("ramnathv/htmlwidgets", "smartinsightsfromdata/rpivot
 
 #### Usage
 
-If you have a data.frame or data.table (e.g. dt), a mix of categorical and numeric columns will do (pivottable has off-the-shelf count and distinct count). It is as simple as this:
+If you have a data.frame or data.table (e.g. dt), a mix of categorical and numeric columns will do (pivottable has off-the-shelf count and distinct count, so only categorical variable will work). 
+
+It is as simple as this:
 
 ```R
-rpivotTable(dt)
+rpivotTable(data, rows, cols, vals, aggregatorName, width, height)
+```
+Please refer to the examples and explanations [here](https://github.com/nicolaskruchten/pivottable/wiki/Parameters). 
+
+Simply put the parameters decide how the pivot table will look like the firs time it is open:
+
+* data can be a data.frame or data.table. Nothing else is needed.  If only the data is selcted the pivot table opens with nothing on rows and columns (but you can at any time drag and drop any variable in rows and columns at your leasure)
+* rows and cols allow the user to create a report, i.e. to indicate which elemnt will be on rows and columns.
+* aggregatorName indicates the type of aggregation. It is associated to vals.  
+
+For example, to display a data.table dt with election data (similar to the example on pivottable site), you can specify:
+```R
+rpivotTable(data=dt, rows="Party", cols="Province", vals"votes", aggregatorName="Sum")
 ```
 
-See the examples in ./inst/examples.
+This will display the sum of votes per Party and Province.
+
+

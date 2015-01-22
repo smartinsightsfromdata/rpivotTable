@@ -6,13 +6,28 @@
 #'
 #' @export
 
-rpivotTable <- function(df_ , width = NULL, height = NULL) {
+rpivotTable <- function(data = NULL, rows = NULL, cols = NULL, vals = NULL, aggregatorName = NULL,
+                        width = NULL, height = NULL) {
 
+  # df_ <- iris[1:2,]
   # forward options using x
-  Data <- lapply(1:nrow(df_), function(i) {
-    l_ <- as.list(df_[i, ])
-    return(l_)})
-  x = Data
+#   Data <- lapply(1:nrow(df_), function(i) {
+#     l_ <- as.list(df_[i, ])
+#     return(l_)})
+
+
+params <- list( rows = list(rows),
+                cols = list(cols),
+                vals = list(vals),
+                aggregatorName = list(aggregatorName))
+
+x <- list(data = data,param = params)
+
+# RJSONIO::toJSON(x)
+
+
+
+
 #     list(
 #     message = message
 #   )

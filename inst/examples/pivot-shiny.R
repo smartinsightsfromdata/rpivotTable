@@ -44,7 +44,7 @@ server = function(input, output, session) {
       jsdf_[1, 3] <- mult*val
     }
 
-    rpivotTable(jsdf_)
+    rpivotTable(jsdf_, "Age", "Party")
   } )
 }
 

@@ -20,6 +20,6 @@ jsdf_$Age <- as.numeric(jsdf_$Age)
 
 
 
-rpivotTable(jsdf_)
+rpivotTable(jsdf_, "Province", "Party")
 
 
