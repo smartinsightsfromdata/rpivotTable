@@ -8,7 +8,7 @@ PivotTable.js is a Javascript Pivot Table library with drag'n'drop functionality
 
 The rpivotTable package depends on the development version of the [htmlwidgets](https://github.com/ramnathv/htmlwidgets) package so you need to install both packages. You can do this using the **devtools** package as follows:
 
-```S
+```R
 devtools::install_github(c("ramnathv/htmlwidgets", "smartinsightsfromdata/rpivotTable"))
 ```
 
@@ -30,10 +30,9 @@ Simply put the parameters decide how the pivot table will look like the firs tim
 * aggregatorName indicates the type of aggregation. It is associated to vals.  
 
 For example, to display a data.table dt with election data (similar to the example on pivottable site), you can specify:
+
 ```R
-rpivotTable(data=dt, rows="Party", cols="Province", vals"votes", aggregatorName="Sum")
+rpivotTable(data = dt, rows = "Party", cols = "Province", vals = "votes", aggregatorName = "Sum")
 ```
 
 This will display the sum of votes per Party and Province.
-
-
