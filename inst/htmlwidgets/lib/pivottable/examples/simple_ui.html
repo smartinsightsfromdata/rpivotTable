@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pivot Demo</title>
+        <link rel="stylesheet" type="text/css" href="../dist/pivot.css">
+        <script type="text/javascript" src="ext/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="ext/jquery-ui-1.9.2.custom.min.js"></script>
+        <script type="text/javascript" src="../dist/pivot.js"></script>
+        <style>
+            * {font-family: Verdana;}
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function(){
+                        $("#output").pivotUI(
+        [ 
+            {color: "blue", shape: "circle"}, 
+            {color: "red", shape: "triangle"}
+        ], 
+        { 
+            rows: ["color"], 
+            cols: ["shape"] 
+        }
+    );
+             });
+        </script>
+
+        <p><a href="index.html">&laquo; back to examples</a></p>
+
+        <p style="width: 800px">This example is the most basic usage of pivotUI().</p>
+
+        
+        <div id="output" style="margin: 10px;"></div>
+
+    </body>
+</html>

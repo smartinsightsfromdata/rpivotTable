@@ -1,40 +1,39 @@
-
 HTMLWidgets.widget({
 
-  name: 'rpivotTable',
+    name: 'rpivotTable',
 
-  type: 'output',
+    type: 'output',
 
-  initialize: function(el, width, height) {
+    initialize: function(el, width, height) {
 
-    return {
-      // TODO: add instance fields as required
+	return {
+	    // TODO: add instance fields as required
 
-   }
+	}
 
-  },
+    },
 
-  renderValue: function(el, x, instance) {
-  //  console.log('el = '+el.id);
+    renderValue: function(el, x, instance) {
+	x.data = HTMLWidgets.dataframeToD3(x.data);
 
-  //  console.log('x.data = '+JSON.stringify(x.data));
-//    console.log('x.param = '+JSON.stringify(x.param));
-x.data = HTMLWidgets.dataframeToD3(x.data) ;
-//console.log('new x1 conv = '+x1);
+	var derivers = $.pivotUtilities.derivers;
+        var renderers = $.extend($.pivotUtilities.renderers, 
+				 $.pivotUtilities.d3_renderers);
+
+	$(function () {
+	    $('#'+el.id).pivotUI(
+		x.data, 
+		{
+		    renderers: renderers
+		}
+	    );
+	});
 
 
-$(function () {
-    $('#'+el.id).pivotUI(
+    },
 
-x.data, x.param );
+    resize: function(el, width, height, instance) {
 
-});
-
-
-},
-
-  resize: function(el, width, height, instance) {
-
-  }
+    }
 
 });

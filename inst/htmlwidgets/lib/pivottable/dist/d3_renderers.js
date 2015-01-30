@@ -19,7 +19,10 @@
           localeStrings: {}
         };
         opts = $.extend(defaults, opts);
-        result = $("<div style='width: 100%; height: 100%;'>");
+        result = $("<div>").css({
+          width: "100%",
+          height: "100%"
+        });
         tree = {
           name: "All",
           children: []

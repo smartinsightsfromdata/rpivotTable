@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pivot Demo</title>
+        <link rel="stylesheet" type="text/css" href="../dist/pivot.css">
+        <script type="text/javascript" src="ext/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="ext/jquery-ui-1.9.2.custom.min.js"></script>
+        <script type="text/javascript" src="../dist/pivot.js"></script>
+        <style>
+            * {font-family: Verdana;}
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function(){
+                    var input = $("#input")
+                    $("#output").pivotUI(input, 
+                    { 
+                        rows: ["color"], 
+                        cols: ["shape"] 
+                    });
+             });
+        </script>
+
+        <p><a href="index.html">&laquo; back to examples</a></p>
+
+        <p style="width: 800px">This example loads data from the HTML table below.</p>
+
+        <div id="output" style="margin: 10px;"></div>
+        <br />
+        <h3>Input table:</h3>
+        <table id="input" border="1">
+            <thead>
+                <tr>
+                    <th>color</th>
+                    <th>shape</th>
+                    <!-- etc... -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span style='color: blue;'>blue</span></td>
+                    <td><span style='font-size:20px'>&bigcirc;</span></td>
+                </tr>
+                <tr>
+                    <td><span style='color: red;'>red</span></td>
+                    <td><span style='font-size:20px'>&bigtriangleup;</span></td>
+                </tr>
+                    <!-- etc... -->
+            </tbody>
+        </table>
+
+    </body>
+</html>

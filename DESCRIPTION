@@ -10,7 +10,7 @@ Authors@R: c(
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
 Description: this package is a wrapper around PivotTable.js is an open-source Javascript Pivot Table (aka Pivot Grid, Pivot Chart,
  Cross-Tab) implementation with drag'n'drop functionality written by Nicolas Kruchten.
-Depends: R (>= 3.1.2)
+Depends: R (>= 3.0.0)
 Imports: htmlwidgets (>= 0.3.2)
 Enhances: shiny (>= 0.10.2.1)
 License: MIT + file LICENSE
