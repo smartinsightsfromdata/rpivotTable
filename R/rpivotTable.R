@@ -15,7 +15,7 @@
 ##' @param width 
 ##' @param height 
 ##' @return 
-##' @author Janko Cizel
+##' @author Enzo Martoglio
 rpivotTable <- function(
     data = NULL,
     rows = NULL,
