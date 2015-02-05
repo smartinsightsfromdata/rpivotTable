@@ -1,21 +1,20 @@
-#' <Add Title>
+#' pivottable.js in R
 #'
-#' <Add Description>
+#' Use pivottable.js in R with the power and convenience of a
+#' htmlwidget.
+#'
+#' @param data data.frame with data to use in the pivot table
+#' @param cols
+#' @param vals
+#' @param rows
+#' @param aggregatorName
+#' @param width
+#' @param height
 #'
 #' @import htmlwidgets
 #'
 #' @export
-##'
-##' @title 
-##' @param data 
-##' @param rows 
-##' @param cols 
-##' @param vals 
-##' @param aggregatorName 
-##' @param width 
-##' @param height 
-##' @return 
-##' @author Enzo Martoglio
+
 rpivotTable <- function(
     data = NULL,
     rows = NULL,
