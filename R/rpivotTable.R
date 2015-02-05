@@ -12,6 +12,8 @@
 #'              \href{https://github.com/nicolaskruchten/pivottable/wiki/Aggregators}{see Wiki for more details} )
 #'              to prepopulate the pivot table.
 #' @param vals String name of the column in the data.frame to use with \code{aggregatorName}.
+#' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
+#'              can be passed to \code{pivotUI}
 #' @param width
 #' @param height
 #'
@@ -25,29 +27,43 @@ rpivotTable <- function(
     cols = NULL,
     aggregatorName = NULL,
     vals = NULL,
+    ...,
     width = NULL,
     height = NULL
 ) {
 
-    params <-
-        list(
-            rows = list(rows),
-            cols = list(cols),
-            vals = list(vals),
-            aggregatorName = list(aggregatorName)
-        )
+    params <- list(
+      rows = rows,
+      cols = cols,
+      aggregatorName = aggregatorName,
+      vals = vals,
+      ...
+    )
+
+    # remove NULL parameters
+    params <- Filter(Negate(is.null), params)
+
+    # auto_box vectors of length 1
+    params <- Map( function(p){
+        if(length(p) == 1){
+          p = list(p)
+        }
+        return(p)
+      }
+      , params
+    )
 
     x <- list(
-        data = data,
-        params = params
+      data = data,
+      params = params
     )
 
     htmlwidgets::createWidget(
-        name = 'rpivotTable',
-        x,
-        width = width,
-        height = height,
-        package = 'rpivotTable'
+      name = 'rpivotTable',
+      x,
+      width = width,
+      height = height,
+      package = 'rpivotTable'
     )
 }
 

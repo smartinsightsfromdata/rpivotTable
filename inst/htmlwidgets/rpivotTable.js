@@ -14,8 +14,12 @@ HTMLWidgets.widget({
 	    x.data = HTMLWidgets.dataframeToD3(x.data);
 
 	    var derivers = $.pivotUtilities.derivers;
-      x.params.renderers = $.extend($.pivotUtilities.renderers)//, remove d3 for now
-        //$.pivotUtilities.d3_renderers);
+      var tpl = $.pivotUtilities.aggregatorTemplates;
+      /* remove d3 for now to simplify for testing
+           will add it back once the widget if fleshed out and tested
+      x.params.renderers = $.extend($.pivotUtilities.renderers),
+        $.pivotUtilities.d3_renderers);
+      */
 
       $('#'+el.id).pivotUI(
       		x.data, x.params
