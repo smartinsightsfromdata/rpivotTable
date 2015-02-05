@@ -14,14 +14,11 @@ HTMLWidgets.widget({
 	    x.data = HTMLWidgets.dataframeToD3(x.data);
 
 	    var derivers = $.pivotUtilities.derivers;
-      var renderers = $.extend($.pivotUtilities.renderers,
-        $.pivotUtilities.d3_renderers);
+      x.params.renderers = $.extend($.pivotUtilities.renderers)//, remove d3 for now
+        //$.pivotUtilities.d3_renderers);
 
       $('#'+el.id).pivotUI(
-      		x.data,
-      		{
-      		    renderers: renderers
-      		}
+      		x.data, x.params
       );
 
     },

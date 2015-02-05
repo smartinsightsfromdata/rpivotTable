@@ -4,10 +4,14 @@
 #' htmlwidget.
 #'
 #' @param data data.frame with data to use in the pivot table
-#' @param cols
-#' @param vals
-#' @param rows
-#' @param aggregatorName
+#' @param rows String name of the column in the data.frame to prepopulate
+#'              the \strong{rows} of the pivot table.
+#' @param cols String name of the column in the data.frame to prepopulate
+#'              the \strong{columns} of the pivot table.
+#' @param aggregatorName String name of the pivottable.js aggregator (
+#'              \href{https://github.com/nicolaskruchten/pivottable/wiki/Aggregators}{see Wiki for more details} )
+#'              to prepopulate the pivot table.
+#' @param vals String name of the column in the data.frame to use with \code{aggregatorName}.
 #' @param width
 #' @param height
 #'
@@ -19,10 +23,11 @@ rpivotTable <- function(
     data = NULL,
     rows = NULL,
     cols = NULL,
-    vals = NULL,
     aggregatorName = NULL,
+    vals = NULL,
     width = NULL,
-    height = NULL) {
+    height = NULL
+) {
 
     params <-
         list(
@@ -34,7 +39,7 @@ rpivotTable <- function(
 
     x <- list(
         data = data,
-        param = params
+        params = params
     )
 
     htmlwidgets::createWidget(
