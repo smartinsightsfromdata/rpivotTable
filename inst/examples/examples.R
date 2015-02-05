@@ -16,4 +16,15 @@ rpivotTable( titanic_df, rows = "Class" )
 # prepopulate multiple rows
 rpivotTable( titanic_df, rows = c("Class","Sex" ) )
 # prepopulate a column
-rpivotTable( titanic_df, rows = "Class", columns = "Survived" )
+rpivotTable( titanic_df, rows = "Class", cols = "Survived" )
+# prepopulate multiple columns and multiple rows
+rpivotTable( titanic_df, rows = c("Class","Sex"), cols = c("Age","Survived" ) )
+
+# prepopulate aggregatorName and vals
+rpivotTable(
+  titanic_df
+  , rows = c("Class","Sex")
+  , cols = "Survived"
+  , aggregatorName = "Sum"
+  , vals = "Freq"
+)
