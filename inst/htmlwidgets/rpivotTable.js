@@ -6,29 +6,23 @@ HTMLWidgets.widget({
 
     initialize: function(el, width, height) {
 
-	return {
-	    // TODO: add instance fields as required
-
-	}
+	    return {}
 
     },
 
     renderValue: function(el, x, instance) {
-	x.data = HTMLWidgets.dataframeToD3(x.data);
+	    x.data = HTMLWidgets.dataframeToD3(x.data);
 
-	var derivers = $.pivotUtilities.derivers;
-        var renderers = $.extend($.pivotUtilities.renderers, 
-				 $.pivotUtilities.d3_renderers);
+	    var derivers = $.pivotUtilities.derivers;
+      var renderers = $.extend($.pivotUtilities.renderers,
+        $.pivotUtilities.d3_renderers);
 
-	$(function () {
-	    $('#'+el.id).pivotUI(
-		x.data, 
-		{
-		    renderers: renderers
-		}
-	    );
-	});
-
+      $('#'+el.id).pivotUI(
+      		x.data,
+      		{
+      		    renderers: renderers
+      		}
+      );
 
     },
 
