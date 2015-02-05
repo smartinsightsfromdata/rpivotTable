@@ -28,3 +28,23 @@ rpivotTable(
   , aggregatorName = "Sum"
   , vals = "Freq"
 )
+
+#  prepopulate with an non-parameter (ie ...)
+rpivotTable(
+  titanic_df
+  , rows = c("Class","Sex","Age")
+  , cols = "Survived"
+  , aggregatorName = "Sum as Fraction of Rows"
+  , vals = "Freq"
+  , rendererName = "Heatmap"
+)
+
+# just another neat example
+rpivotTable(
+  titanic_df
+  , rows = "Survived"
+  , cols = c("Class","Sex")
+  , aggregatorName = "Sum as Fraction of Columns"
+  , vals = "Freq"
+  , rendererName = "Table Barchart"
+)
