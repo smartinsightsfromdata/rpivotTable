@@ -33,11 +33,17 @@ rpivotTable <- function(
 ) {
 
     # check for data.frame, data.table, or array
-    if( length(intersect(class(data),c("data.frame", "data.table", "table"))) == 0 ) {
+    if( length(intersect(class(data),c("data.frame", "data.table", "table","structable", "ftable" ))) == 0 ) {
       stop( "data should be a data.frame, data.table, or table", call.=F)
     }
-    # convert of data.table or table to data.frame
-    if( length(intersect(class(data),c("data.table", "table"))) > 0 )  {
+    # convert data.table to data.frame
+    #   also explicitly warn of conversion
+    if( "data.table" %in% class(data) )  {
+      warning( "data.table and table will be converted to data.frame")
+      data = as.data.frame( data )
+    }
+    #convert table to data.frame
+    if( length(intersect(c("table","structable", "ftable"), class(data))) > 0 )  {
       data = as.data.frame( data )
     }
 
