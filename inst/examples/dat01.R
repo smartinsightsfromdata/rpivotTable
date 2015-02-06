@@ -19,6 +19,7 @@ jsdf_$votes <- round(runif(10, min=5000, max=15000))
 jsdf_$avAge <- as.numeric(jsdf_$Age)
 jsdf_$Age <- jsdf_$Name <- jsdf_$Gender <- NULL
 
-rpivotTable(data = jsdf_, rows = "Party", cols = "Province", vals = "votes", aggregatorName = "Sum")
+rpivotTable(data = jsdf_, rows = "Party", cols =
+              "Province", vals = "votes", aggregatorName = "Sum", rendererName = "Treemap")
 
 

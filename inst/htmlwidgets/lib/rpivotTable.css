@@ -1,3 +1,6 @@
 .rpivotTable .node {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
   position: absolute;
 }

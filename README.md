@@ -19,7 +19,7 @@ If you have a data.frame or data.table (e.g. dt), a mix of categorical and numer
 It is as simple as this:
 
 ```R
-rpivotTable(data, rows, cols, vals, aggregatorName, width, height)
+rpivotTable(data, rows, cols, vals, aggregatorName, rendererName, width, height)
 ```
 Please refer to the examples and explanations [here](https://github.com/nicolaskruchten/pivottable/wiki/Parameters). 
 
@@ -32,7 +32,7 @@ Simply put the parameters decide how the pivot table will look like the firs tim
 For example, to display a data.table dt with election data (similar to the example on pivottable site), you can specify:
 
 ```R
-rpivotTable(data = dt, rows = "Party", cols = "Province", vals = "votes", aggregatorName = "Sum")
+rpivotTable(data = dt, rows = "Party", cols = "Province", vals = "votes", aggregatorName = "Sum", rendererName = "Treemap")
 ```
 
-This will display the sum of votes per Party and Province.
+This will display the sum of votes per Party and Province in a Treemap.
