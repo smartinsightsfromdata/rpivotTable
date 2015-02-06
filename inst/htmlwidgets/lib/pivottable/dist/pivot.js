@@ -514,7 +514,7 @@
           return $("tbody > tr", input).each(function(i) {
             record = {};
             $("td", this).each(function(j) {
-              return record[tblCols[j]] = $(this).text();
+              return record[tblCols[j]] = $(this).html();
             });
             return addRecord(record);
           });
@@ -684,7 +684,7 @@
         }
         th = document.createElement("th");
         th.className = "pvtAxisLabel";
-        th.textContent = c;
+        th.innerHTML = c;
         tr.appendChild(th);
         for (i in colKeys) {
           if (!__hasProp.call(colKeys, i)) continue;
@@ -693,7 +693,7 @@
           if (x !== -1) {
             th = document.createElement("th");
             th.className = "pvtColLabel";
-            th.textContent = colKey[j];
+            th.innerHTML = colKey[j];
             th.setAttribute("colspan", x);
             if (parseInt(j) === colAttrs.length - 1 && rowAttrs.length !== 0) {
               th.setAttribute("rowspan", 2);
@@ -717,7 +717,7 @@
           r = rowAttrs[i];
           th = document.createElement("th");
           th.className = "pvtAxisLabel";
-          th.textContent = r;
+          th.innerHTML = r;
           tr.appendChild(th);
         }
         th = document.createElement("th");
@@ -739,7 +739,7 @@
           if (x !== -1) {
             th = document.createElement("th");
             th.className = "pvtRowLabel";
-            th.textContent = txt;
+            th.innerHTML = txt;
             th.setAttribute("rowspan", x);
             if (parseInt(j) === rowAttrs.length - 1 && colAttrs.length !== 0) {
               th.setAttribute("colspan", 2);
@@ -925,9 +925,9 @@
           }
           return _results;
         });
-        uiTable = $("<table cellpadding='5'>");
+        uiTable = $("<table>").attr("cellpadding", 5);
         rendererControl = $("<td>");
-        renderer = $("<select class='pvtRenderer'>").appendTo(rendererControl).bind("change", function() {
+        renderer = $("<select>").addClass('pvtRenderer').appendTo(rendererControl).bind("change", function() {
           return refresh();
         });
         _ref1 = opts.renderers;
@@ -935,7 +935,7 @@
           if (!__hasProp.call(_ref1, x)) continue;
           $("<option>").val(x).html(x).appendTo(renderer);
         }
-        colList = $("<td class='pvtAxisContainer pvtUnused'>");
+        colList = $("<td>").addClass('pvtAxisContainer pvtUnused');
         shownAttributes = (function() {
           var _j, _len1, _results;
           _results = [];
@@ -978,22 +978,30 @@
             valueList.append($("<p>").html(opts.localeStrings.tooMany));
           } else {
             btns = $("<p>").appendTo(valueList);
-            btns.append($("<button>").html(opts.localeStrings.selectAll).bind("click", function() {
+            btns.append($("<button>", {
+              type: "button"
+            }).html(opts.localeStrings.selectAll).bind("click", function() {
               return valueList.find("input:visible").prop("checked", true);
             }));
-            btns.append($("<button>").html(opts.localeStrings.selectNone).bind("click", function() {
+            btns.append($("<button>", {
+              type: "button"
+            }).html(opts.localeStrings.selectNone).bind("click", function() {
               return valueList.find("input:visible").prop("checked", false);
             }));
-            btns.append($("<input>").addClass("pvtSearch").attr("placeholder", opts.localeStrings.filterResults).bind("keyup", function() {
+            btns.append($("<input>", {
+              type: "text",
+              placeholder: opts.localeStrings.filterResults,
+              "class": "pvtSearch"
+            }).bind("keyup", function() {
               var filter;
               filter = $(this).val().toLowerCase();
-              return $(this).parents(".pvtFilterBox").find('label span').each(function() {
+              return valueList.find('.pvtCheckContainer p').each(function() {
                 var testString;
                 testString = $(this).text().toLowerCase().indexOf(filter);
                 if (testString !== -1) {
-                  return $(this).parent().show();
+                  return $(this).show();
                 } else {
-                  return $(this).parent().hide();
+                  return $(this).hide();
                 }
               });
             }));
@@ -1005,14 +1013,15 @@
               filterItem = $("<label>");
               filterItemExcluded = opts.exclusions[c] ? (__indexOf.call(opts.exclusions[c], k) >= 0) : false;
               hasExcludedItem || (hasExcludedItem = filterItemExcluded);
-              $("<input type='checkbox' class='pvtFilter'>").attr("checked", !filterItemExcluded).data("filter", [c, k]).appendTo(filterItem);
-              filterItem.append($("<span>").text("" + k + " (" + v + ")"));
+              $("<input>").attr("type", "checkbox").addClass('pvtFilter').attr("checked", !filterItemExcluded).data("filter", [c, k]).appendTo(filterItem);
+              filterItem.append($("<span>").html(k));
+              filterItem.append($("<span>").text(" (" + v + ")"));
               checkContainer.append($("<p>").append(filterItem));
             }
           }
           updateFilter = function() {
             var unselectedCount;
-            unselectedCount = $(valueList).find("[type='checkbox']").length - $(valueList).find("[type='checkbox']:checked").length;
+            unselectedCount = valueList.find("[type='checkbox']").length - valueList.find("[type='checkbox']:checked").length;
             if (unselectedCount > 0) {
               attrElem.addClass("pvtFilteredAttribute");
             } else {
@@ -1024,17 +1033,19 @@
               return valueList.toggle(0, refresh);
             }
           };
-          $("<p>").appendTo(valueList).append($("<button>").text("OK").bind("click", updateFilter));
+          $("<p>").appendTo(valueList).append($("<button>", {
+            type: "button"
+          }).text("OK").bind("click", updateFilter));
           showFilterList = function(e) {
             valueList.css({
               left: e.pageX,
               top: e.pageY
             }).toggle();
-            $('.pvtSearch').val('');
-            return $('label').show();
+            valueList.find('.pvtSearch').val('');
+            return valueList.find('.pvtCheckContainer p').show();
           };
-          triangleLink = $("<span class='pvtTriangle'>").html(" &#x25BE;").bind("click", showFilterList);
-          attrElem = $("<li class='axis_" + i + "'>").append($("<span class='pvtAttr'>").text(c).data("attrName", c).append(triangleLink));
+          triangleLink = $("<span>").addClass('pvtTriangle').html(" &#x25BE;").bind("click", showFilterList);
+          attrElem = $("<li>").addClass("axis_" + i).append($("<span>").addClass('pvtAttr').text(c).data("attrName", c).append(triangleLink));
           if (hasExcludedItem) {
             attrElem.addClass('pvtFilteredAttribute');
           }
@@ -1042,11 +1053,12 @@
           return attrElem.bind("dblclick", showFilterList);
         };
         for (i in shownAttributes) {
+          if (!__hasProp.call(shownAttributes, i)) continue;
           c = shownAttributes[i];
           _fn(c);
         }
         tr1 = $("<tr>").appendTo(uiTable);
-        aggregator = $("<select class='pvtAggregator'>").bind("change", function() {
+        aggregator = $("<select>").addClass('pvtAggregator').bind("change", function() {
           return refresh();
         });
         _ref2 = opts.aggregators;
@@ -1054,11 +1066,11 @@
           if (!__hasProp.call(_ref2, x)) continue;
           aggregator.append($("<option>").val(x).html(x));
         }
-        $("<td class='pvtVals'>").appendTo(tr1).append(aggregator).append($("<br>"));
-        $("<td class='pvtAxisContainer pvtHorizList pvtCols'>").appendTo(tr1);
+        $("<td>").addClass('pvtVals').appendTo(tr1).append(aggregator).append($("<br>"));
+        $("<td>").addClass('pvtAxisContainer pvtHorizList pvtCols').appendTo(tr1);
         tr2 = $("<tr>").appendTo(uiTable);
-        tr2.append($("<td valign='top' class='pvtAxisContainer pvtRows'>"));
-        pivotTable = $("<td valign='top' class='pvtRendererArea'>").appendTo(tr2);
+        tr2.append($("<td>").addClass('pvtAxisContainer pvtRows').attr("valign", "top"));
+        pivotTable = $("<td>").attr("valign", "top").addClass('pvtRendererArea').appendTo(tr2);
         if (opts.unusedAttrsVertical === true || unusedAttrsVerticalAutoOverride) {
           uiTable.find('tr:nth-child(1)').prepend(rendererControl);
           uiTable.find('tr:nth-child(2)').prepend(colList);
@@ -1069,12 +1081,12 @@
         _ref3 = opts.cols;
         for (_k = 0, _len2 = _ref3.length; _k < _len2; _k++) {
           x = _ref3[_k];
-          this.find(".pvtCols").append(this.find(".axis_" + (shownAttributes.indexOf(x))));
+          this.find(".pvtCols").append(this.find(".axis_" + ($.inArray(x, shownAttributes))));
         }
         _ref4 = opts.rows;
         for (_l = 0, _len3 = _ref4.length; _l < _len3; _l++) {
           x = _ref4[_l];
-          this.find(".pvtRows").append(this.find(".axis_" + (shownAttributes.indexOf(x))));
+          this.find(".pvtRows").append(this.find(".axis_" + ($.inArray(x, shownAttributes))));
         }
         if (opts.aggregatorName != null) {
           this.find(".pvtAggregator").val(opts.aggregatorName);
@@ -1094,7 +1106,6 @@
               rows: []
             };
             numInputsToProcess = (_ref5 = opts.aggregators[aggregator.val()]([])().numInputs) != null ? _ref5 : 0;
-
             vals = [];
             _this.find(".pvtRows li span.pvtAttr").each(function() {
               return subopts.rows.push($(this).data("attrName"));
@@ -1115,7 +1126,7 @@
             if (numInputsToProcess !== 0) {
               pvtVals = _this.find(".pvtVals");
               for (x = _m = 0; 0 <= numInputsToProcess ? _m < numInputsToProcess : _m > numInputsToProcess; x = 0 <= numInputsToProcess ? ++_m : --_m) {
-                newDropdown = $("<select class='pvtAttrDropdown'>").append($("<option>")).bind("change", function() {
+                newDropdown = $("<select>").addClass('pvtAttrDropdown').append($("<option>")).bind("change", function() {
                   return refresh();
                 });
                 for (_n = 0, _len4 = shownAttributes.length; _n < _len4; _n++) {
@@ -1134,7 +1145,6 @@
               });
               initialRender = false;
             }
-
             subopts.aggregatorName = aggregator.val();
             subopts.vals = vals;
             subopts.aggregator = opts.aggregators[aggregator.val()](vals);
