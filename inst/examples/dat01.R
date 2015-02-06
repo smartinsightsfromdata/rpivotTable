@@ -12,14 +12,13 @@ jsontxt <- '[ {"Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, La
 {"Province": "Ontario", "Party": "Conservative", "Age": 66, "Name": "Davidson, Patricia", "Gender": "Female"},
 {"Province": "Manitoba", "Party": "Conservative", "Age": 65, "Name": "Smith, Joy", "Gender": "Female"}]'
 
+# validate(jsontxt)
 
-validate(jsontxt)
 jsdf_ <- jsonlite::fromJSON(jsontxt)
-jsdf_$Age <- as.numeric(jsdf_$Age)
+jsdf_$votes <- round(runif(10, min=5000, max=15000))
+jsdf_$avAge <- as.numeric(jsdf_$Age)
+jsdf_$Age <- jsdf_$Name <- jsdf_$Gender <- NULL
 
-
-
-
-rpivotTable(jsdf_, "Province", "Party")
+rpivotTable(data = jsdf_, rows = "Party", cols = "Province", vals = "votes", aggregatorName = "Sum")
 
 
