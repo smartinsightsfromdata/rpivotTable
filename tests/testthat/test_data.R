@@ -1,5 +1,7 @@
 context("Data")
 
+library(dplyr)
+
 test_that("data is checked",{
   expect_error(rpivotTable( data= NULL ) )
   expect_error(rpivotTable( 1:20 ))
@@ -17,4 +19,8 @@ test_that("data is not changed",{
   expect_identical(
     rpivotTable( data.frame(x=1:10,y=LETTERS[1:10]) )$x$data
     , data.frame(x=1:10,y=LETTERS[1:10]))
+  expect_is(
+    rpivotTable(tbl_df(iris))$x$data
+    , "tbl_df"
+  )
 })
