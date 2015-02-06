@@ -3,7 +3,7 @@
 #' Use pivottable.js in R with the power and convenience of a
 #' htmlwidget.
 #'
-#' @param data data.frame with data to use in the pivot table
+#' @param data data.frame, data.table, or table with data to use in the pivot table
 #' @param rows String name of the column in the data.frame to prepopulate
 #'              the \strong{rows} of the pivot table.
 #' @param cols String name of the column in the data.frame to prepopulate
@@ -31,6 +31,15 @@ rpivotTable <- function(
     width = NULL,
     height = NULL
 ) {
+
+    # check for data.frame, data.table, or array
+    if( length(intersect(class(data),c("data.frame", "data.table", "table"))) == 0 ) {
+      stop( "data should be a data.frame, data.table, or table", call.=F)
+    }
+    # convert of data.table or table to data.frame
+    if( length(intersect(class(data),c("data.table", "table"))) > 0 )  {
+      data = as.data.frame( data )
+    }
 
     params <- list(
       rows = rows,
