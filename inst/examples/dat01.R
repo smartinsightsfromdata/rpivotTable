@@ -1,5 +1,6 @@
-library(jsonlite)
+library("jsonlite")
 library(rpivotTable)
+library(data.table)
 
 jsontxt <- '[ {"Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, Laurin", "Gender": "Female"},
 {"Province": "Quebec", "Party": "Bloc Quebecois", "Age": 43, "Name": "Mourani, Maria", "Gender": "Female"},
@@ -12,14 +13,22 @@ jsontxt <- '[ {"Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, La
 {"Province": "Ontario", "Party": "Conservative", "Age": 66, "Name": "Davidson, Patricia", "Gender": "Female"},
 {"Province": "Manitoba", "Party": "Conservative", "Age": 65, "Name": "Smith, Joy", "Gender": "Female"}]'
 
-# validate(jsontxt)
 
-jsdf_ <- jsonlite::fromJSON(jsontxt)
+
+jsdf_ <- fromJSON(jsontxt)
 jsdf_$votes <- round(runif(10, min=5000, max=15000))
 jsdf_$avAge <- as.numeric(jsdf_$Age)
 jsdf_$Age <- jsdf_$Name <- jsdf_$Gender <- NULL
 
-rpivotTable(data = jsdf_, rows = "Party", cols =
+
+# colnames(iris) <- c("Sepal_Length" ,"Sepal_Width",  "Petal_Length" ,"Petal_Width" , "Species")
+# iris
+#
+# data.table(fromJSON(toJSON(data.table(iris))))
+
+
+
+rpivotTable(data =   jsdf_   , rows = "Party", cols =
               "Province", vals = "votes", aggregatorName = "Sum", rendererName = "Treemap")
 
 
