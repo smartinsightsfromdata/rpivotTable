@@ -89,7 +89,7 @@ prop.table(as.table(structable(  Survived~Class+Sex, data = Titanic)))
 # try out d3 renderer
 rpivotTable(
   titanic_f
-  , rows = c("Survived","Class","Sex")
+  , rows = c("Survived","Class")
   # cols don't work with treemap
   , aggregatorName = "Count"
   , rendererName = "Treemap"
