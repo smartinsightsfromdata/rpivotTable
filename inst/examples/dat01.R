@@ -24,8 +24,8 @@ jsdf_$Age <- jsdf_$Name <- jsdf_$Gender <- NULL
 # colnames(iris) <- c("Sepal_Length" ,"Sepal_Width",  "Petal_Length" ,"Petal_Width" , "Species")
 # iris
 #
-# data.table(fromJSON(toJSON(data.table(iris))))
-
+data.table(fromJSON(toJSON(data.table(iris))))
+rpivotTable(data = as.data.table(iris))
 
 
 rpivotTable(data =   jsdf_   , rows = "Party", cols =
