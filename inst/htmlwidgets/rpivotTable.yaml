@@ -6,9 +6,11 @@ dependencies:
 - name: jquery-ui
   version: 1.11.2
   src: htmlwidgets/lib/jqueryui
-  script:
-  - jquery-ui.min.js
-  - jquery.ui.touch-punch.min.js
+  script: jquery-ui.min.js
+- name: jquery-ui-touchpunch
+  version: 0.2.3
+  src: htmlwidgets/lib/jqueryui-touch-punch
+  script: jquery.ui.touch-punch.min.js
 - name: d3
   version: 3.3.8
   src: htmlwidgets/lib/d3
