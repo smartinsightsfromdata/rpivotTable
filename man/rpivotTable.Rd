@@ -4,11 +4,11 @@
 \alias{rpivotTable}
 \title{pivottable.js in R}
 \usage{
-rpivotTable(data = NULL, rows = NULL, cols = NULL,
-  aggregatorName = NULL, vals = NULL, ..., width = NULL, height = NULL)
+rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
+  vals = NULL, ..., width = NULL, height = NULL)
 }
 \arguments{
-\item{data}{data.frame with data to use in the pivot table}
+\item{data}{data.frame or data.table (R>=1.9.5 for safety) with data to use in the pivot table}
 
 \item{rows}{String name of the column in the data.frame to prepopulate
 the \strong{rows} of the pivot table.}
@@ -20,7 +20,7 @@ the \strong{columns} of the pivot table.}
 \href{https://github.com/nicolaskruchten/pivottable/wiki/Aggregators}{see Wiki for more details} )
 to prepopulate the pivot table.}
 
-\item{vals}{String name of the column in the data.frame to use with \code{aggregatorName}.}
+\item{vals}{String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number)}
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 can be passed to \code{pivotUI}}
@@ -28,6 +28,8 @@ can be passed to \code{pivotUI}}
 \item{width}{}
 
 \item{height}{}
+
+\item{rendererName}{String name specifying how the data will be rendered (e.g. Table, Treemap etc.) {see Wiki for more details}.}
 }
 \description{
 Use pivottable.js in R with the power and convenience of a

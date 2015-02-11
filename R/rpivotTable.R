@@ -3,7 +3,7 @@
 #' Use pivottable.js in R with the power and convenience of a
 #' htmlwidget.
 #'
-#' @param data data.frame with data to use in the pivot table
+#' @param data data.frame or data.table (R>=1.9.5 for safety) with data to use in the pivot table
 #' @param rows String name of the column in the data.frame to prepopulate
 #'              the \strong{rows} of the pivot table.
 #' @param cols String name of the column in the data.frame to prepopulate
@@ -11,7 +11,8 @@
 #' @param aggregatorName String name of the pivottable.js aggregator (
 #'              \href{https://github.com/nicolaskruchten/pivottable/wiki/Aggregators}{see Wiki for more details} )
 #'              to prepopulate the pivot table.
-#' @param vals String name of the column in the data.frame to use with \code{aggregatorName}.
+#' @param vals String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number)
+#' @param rendererName String name specifying how the data will be rendered (e.g. Table, Treemap etc.) {see Wiki for more details}.
 #' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 #'              can be passed to \code{pivotUI}
 #' @param width
@@ -22,7 +23,7 @@
 #' @export
 
 rpivotTable <- function(
-    data = NULL,
+    data,
     rows = NULL,
     cols = NULL,
     aggregatorName = NULL,
@@ -31,6 +32,12 @@ rpivotTable <- function(
     width = NULL,
     height = NULL
 ) {
+
+# check for data.frame, data.table. Array (and ftable) escluded as lacking proper column names
+if( length(intersect(class(data),c("data.frame", "data.table" ))) == 0 ) {
+stop( "data should be a data.frame or data.table", call.=F)
+}
+
 
     params <- list(
       rows = rows,
