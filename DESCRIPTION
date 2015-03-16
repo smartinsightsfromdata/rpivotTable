@@ -1,6 +1,6 @@
 Package: rpivotTable
 Title: Interface to pivottable library, to have a powerful pivot table on R & shiny
-Version: 0.1.2.7.2
+Version: 0.1.3
 Authors@R: c(
     person("Nicolas", "kruchten", role = c("aut", "cph"),
        comment = "pivottable library in htmlwidgets/lib, http://nicolas.kruchten.com/pivottable/examples/"),
@@ -19,4 +19,4 @@ Enhances: shiny (>= 0.10.2.1)
 License: MIT + file LICENSE
 Materials: README
 LazyData: true
-URL: https://github.com/smartinsightsfromdata/
+URL: https://github.com/smartinsightsfromdata/, http://smartinsightsfromdata.github.io

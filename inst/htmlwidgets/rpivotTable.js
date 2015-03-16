@@ -18,10 +18,11 @@ HTMLWidgets.widget({
 
       x.params.renderers = $.extend(
         $.pivotUtilities.renderers,
-        $.pivotUtilities.d3_renderers
+        $.pivotUtilities.d3_renderers,
+        $.pivotUtilities.c3_renderers
       );
 
-
+                    
       $('#'+el.id).pivotUI(
       		x.data, x.params
       );

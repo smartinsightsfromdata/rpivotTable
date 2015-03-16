@@ -51,3 +51,6 @@ tbl_df %>%
 filter( Sepal.Width > 3 ) %>%
 rpivotTable
 ```
+
+#### News
+From version 0.1.3 onward added c3 renderers (thanks Nicolas!) "line Chart C3" and "bar Chart C3".
