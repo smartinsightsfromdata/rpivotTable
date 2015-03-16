@@ -9,12 +9,12 @@ dependencies:
   script:
   - jquery-ui.min.js
   - jquery.ui.touch-punch.min.js
-- name: d3
+- name: c3
   version: 3.5
   src: htmlwidgets/lib/c3
   script: c3.min.js
   stylesheet: c3.min.css
-- name: c3
+- name: d3
   version: 3.5
   src: htmlwidgets/lib/d3
   script: d3.v3.min.js
