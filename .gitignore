@@ -1,3 +1,7 @@
+.Rbuildignore
+.Rprofile
+.rpivotTable.Rproj
 .Rproj.user
 .Rhistory
 .DS_Store
+packrat/lib*/

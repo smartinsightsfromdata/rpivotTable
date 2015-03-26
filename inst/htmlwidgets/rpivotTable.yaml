@@ -15,7 +15,7 @@ dependencies:
   script: c3.min.js
   stylesheet: c3.min.css
 - name: d3
-  version: 3.5
+  version: 3.5.5
   src: htmlwidgets/lib/d3
   script: d3.v3.min.js
 - name: pivottable
@@ -35,3 +35,7 @@ dependencies:
   version: 0.1
   src: htmlwidgets/lib
   stylesheet: rpivotTable.css
+- name: polyfill
+  version: 0.1
+  src: htmlwidgets/lib/polyfill
+  script: polyfill.min.js
