@@ -4,7 +4,7 @@ dependencies:
   src: htmlwidgets/lib/jquery/dist
   script: jquery.min.js
 - name: jquery-ui
-  version: 1.11.2
+  version: 1.10.4
   src: htmlwidgets/lib/jqueryui
   script:
   - jquery-ui.min.js
