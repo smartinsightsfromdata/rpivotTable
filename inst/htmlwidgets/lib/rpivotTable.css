@@ -1,6 +1,10 @@
-.rpivotTable .node {
-  border: solid 1px white;
-  font: 10px sans-serif;
-  line-height: 12px;
-  position: absolute;
-}
+.rpivotTable 
+body {font-family: Verdana;}
+            .node {
+              border: solid 1px white;
+              font: 9px sans-serif;
+              line-height: 12px;
+              overflow: hidden;
+              position: absolute;
+              text-indent: 2px;
+            }

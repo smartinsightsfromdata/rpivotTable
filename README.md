@@ -1,6 +1,6 @@
 ### rpivotTable:  pivottable for R
 
-The rpivotTable package is an R [htmlwidget](http://htmlwidgets.org)  to the [pivottable](http://nicolas.kruchten.com/pivottable/examples/)  library.
+The rpivotTable package is an R [htmlwidget](http://htmlwidgets.org)  built around the [pivottable](http://nicolas.kruchten.com/pivottable/examples/)  library.
 
 PivotTable.js is a Javascript Pivot Table library with drag'n'drop functionality built on top of jQuery/jQueryUI and  written in CoffeeScript by Nicolas Kruchten at Datacratic. It is available under an MIT license
 
@@ -53,4 +53,4 @@ rpivotTable
 ```
 
 #### News
-From version 0.1.3 onward added c3 renderers (thanks Nicolas!) "line Chart C3" and "bar Chart C3".
+From version 0.1.3 onward added rich c3 renderers (thanks Nicolas!).
