@@ -22,7 +22,7 @@ HTMLWidgets.widget({
         $.pivotUtilities.c3_renderers
       );
 
-                    
+
       $('#'+el.id).pivotUI(
       		x.data, x.params
       );

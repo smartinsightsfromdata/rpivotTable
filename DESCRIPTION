@@ -1,23 +1,23 @@
 Package: rpivotTable
-Title: Interface to pivottable library, to have a powerful pivot table on R & shiny
-Date: 2015-3-16
-Version: 0.1.4.1
+Title: Interface to pivottable library, to have a powerful pivot table on R, knitr & shiny
+Date: 2015-7-11
+Version: 0.1.5.0
 Authors@R: c(
     person("Nicolas", "kruchten", role = c("aut", "cph"),
-       comment = "pivottable library in htmlwidgets/lib, http://nicolas.kruchten.com/pivottable/examples/"),
+       comment = "pivottable library in inst/htmlwidgets/lib, http://nicolas.kruchten.com/pivottable/examples/"),
     person("Enzo", "Martoglio", role = c("aut", "cre"),
        comment = "R interface", email = "enzo@smartinsightsfromdata.com")
     )
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
-Description: this package is a wrapper around PivotTable.js is an open-source
+Description: this package is a wrapper of PivotTable.js is an open-source
     Javascript Pivot Table (aka Pivot Grid, Pivot Chart, Cross-Tab)
     implementation with drag'n'drop functionality written by Nicolas Kruchten.
-    Aligned to pivottable v1.4.3
+    Aligned to pivottable v1.6.3
 Depends:
     R (>= 3.1.0)
 Imports:
-    htmlwidgets (>= 0.3.2)
-Enhances: shiny (>= 0.11.1)
+    htmlwidgets (>= 0.4)
+Enhances: shiny (>= 0.12)
 License: MIT + file LICENSE
 Materials: README
 LazyData: true

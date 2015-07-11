@@ -31,7 +31,8 @@ Please refer to the examples and explanations [here](https://github.com/nicolask
 * `data` can be a `data.frame` or `data.table`. Nothing else is needed.  If only the data is selected the pivot table opens with nothing on rows and columns (but you can at any time drag and drop any variable in rows or columns at your leasure)
 * `rows` and `cols` allow the user to create a report, i.e. to indicate which element will be on rows and columns.
 * `aggregatorName` indicates the type of aggregation. Options here are numerous: Count, Count Unique Values, List Unique Values, Sum, Integer Sum, Average, Sum over Sum, 80% Upper Bound, 80% Lower Bound, Sum as Fraction of Total, Sum as Fraction of Rows, Sum as Fraction of Columns, Count as Fraction of Total, Count as Fraction of Rows, Count as Fraction of Columns
-* `vals` specifies the variable to use with `aggregatorName`.  
+* `vals` specifies the variable to use with `aggregatorName`. 
+* `renderers` dictates the type of graphic element used for display, like Table, Treemap etc.
 
 For example, to display a data.table dt with election data (partially similar to the example on the pivottable site), you can specify:
 
@@ -41,7 +42,7 @@ rpivotTable(data = dt, rows = "Province", vals = "votes", aggregatorName = "Sum"
 
 This will display the Treemap of the votes per Province.
 
-Or if you want to include as part of your `dplyr` pipeline, you can do that also.
+Or if you want to include it as part of your `dplyr` / `magrittr` pipeline, you can do that also:
 
 ```R
 library(dplyr)
@@ -53,4 +54,15 @@ rpivotTable
 ```
 
 #### News
-From version 0.1.3 onward added rich c3 renderers (thanks Nicolas!).
+
+
+This version 0.1.5.0 is based on (the minimised version of):
+
+* pivottable 1.6.3
+* jquery 1.11.2
+* jquery.ui 1.11.4
+* jquery.ui.touch-punch 0.2.3
+* d3 3.5.5
+* c3 0.4.10
+
+

@@ -1,14 +1,15 @@
 dependencies:
 - name: jquery
-  version: 1.11.0
+  version: 1.11.2
   src: htmlwidgets/lib/jquery/dist
   script: jquery.min.js
 - name: jquery-ui
-  version: 1.10.4
+  version: 1.11.4
   src: htmlwidgets/lib/jqueryui
   script:
   - jquery-ui.min.js
   - jquery.ui.touch-punch.min.js
+  stylesheet: jquery-ui.min.css
 - name: c3
   version: 0.4.10
   src: htmlwidgets/lib/c3
@@ -19,16 +20,16 @@ dependencies:
   src: htmlwidgets/lib/d3
   script: d3.v3.min.js
 - name: pivottable
-  version: 1.4.3
+  version: 1.6.3
   src: htmlwidgets/lib/pivottable/dist
   stylesheet: pivot.min.css
   script: pivot.min.js
 - name: pivottable_d3renderers
-  version: 1.4.3
+  version: 1.6.3
   src: htmlwidgets/lib/pivottable/dist
   script: d3_renderers.min.js
 - name: pivottable_c3renderers
-  version: 1.4.3
+  version: 1.6.3
   src: htmlwidgets/lib/pivottable/dist
   script: c3_renderers.min.js
 - name: polyfill
