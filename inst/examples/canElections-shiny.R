@@ -1,34 +1,71 @@
 library(rpivotTable)
-library(data.table)
 library(shiny)
+library(ggvis)
+library(dplyr)
 
-# canEldt <- fread(paste0("./inst/examples/", "canadaFctElections.csv"),header=T)
-# save(canEldt,file="./inst/examples/canEldt.RData")
-load(file="data/canEldt.RData")
-
-canEldt$votes <- round(runif(nrow(canEldt), min=500, max=15000))
+canData <- '
+Candidate,Party,Province,Age,Gender
+"Liu, Laurin",NDP,Quebec,22,Female
+"Mourani, Maria",Bloc Quebecois,Quebec,43,Female
+"Mars, Silvia",Bloc Quebecois,Quebec,34,Female
+"Sellah, Djaouida",NDP,Quebec,,Female
+"St-Denis, Lise",NDP,Quebec,72,Female
+"Fry, Hedy",Liberal,British Columbia,71,Female
+"Turmel, Nycole",NDP,Quebec,70,Female
+"Sgro, Judy",Liberal,Ontario,68,Female
+"Raynault, Francine",NDP,Quebec,67,Female
+"Davidson, Patricia",Conservative,Ontario,66,Female
+"Smith, Joy",Conservative,Manitoba,65,Female
+"Wong, Alice",Conservative,British Columbia,64,Female
+"ONeill Gordon, Tilly",Conservative,New Brunswick,63,Female
+"Ablonczy, Diane",Conservative,Alberta,63,Female
+"Duncan, Linda Francis",NDP,Alberta,63,Female
+"Bennett, Carolyn",Liberal,Ontario,62,Female
+"Nash, Peggy",NDP,Ontario,61,Female
+"Mathyssen, Irene",NDP,Ontario,61,Female
+"Sims, Jinny Jogindera",NDP,British Columbia,60,Female
+"Foote, Judy",Liberal,Newfoundland,60,Female
+"Crowder, Jean",NDP,British Columbia,60,Female
+"Davies, Libby",NDP,British Columbia,59,Female
+"Yelich, Lynne",Conservative,Saskatchewan,59,Female
+"Day, Anne-Marie",NDP,Quebec,58,Female
+"May, Elizabeth",Green,British Columbia,58,Female
+"Murray, Joyce",Liberal,British Columbia,58,Female
+"Findlay, Kerry-Lynne D.",Conservative,British Columbia,57,Female
+"Brown, Lois",Conservative,Ontario,57,Female
+"Boutin-Sweet, Marjolaine",NDP,Quebec,57,Female
+"Crockatt, Joan",Conservative,Alberta,56,Female
+"Chow, Olivia",NDP,Ontario,55,Female
+"McLeod, Cathy",Conservative,British Columbia,55,Female
+"Finley, Diane",Conservative,Ontario,55,Female
+"LeBlanc, Helene",NDP,Quebec,54,Female
+"Grewal, Nina",Conservative,British Columbia,54,Female
+"Hughes, Carol",NDP,Ontario,54,Female
+"Shea, Gail",Conservative,Prince Edward Island,53,Female
+"Truppe, Susan",Conservative,Ontario,53,Female
+"Young, Wai",Conservative,British Columbia,52,Female'
+con <- textConnection(canData)
+canEldf <- read.csv(con, header=TRUE, stringsAsFactors = FALSE)
+canEldf$votes <- round(runif(nrow(canEldf), min=500, max=15000))
 
 
 ui = shinyUI(fluidPage(
-  fluidRow(  column(2,sliderInput("integer", "Multiplier:",
-                                  min=1, max=4, value=1)),
-    column(8,
-           rpivotTableOutput("pivot") )
-
+  fluidRow( rpivotTableOutput("pivot")
+  ,fluidRow( ggvisOutput("lgraph"))
 )))
 
 server = function(input, output, session) {
+reactive({
+    canEldf %>% select(Province,Party,votes) %>% group_by(Party, Province) %>% summarise(votes=sum(votes)) -> candf
+    ggvis(candf, ~Province, ~votes, fill = ~ Party) %>%
+      layer_bars(width=0.4) %>%  scale_nominal("fill")
+}) %>%  bind_shiny("lgraph") 
 
-  ##
   output$pivot <- renderRpivotTable({
-    if(!is.null(input$integer)) {
-      mult <- input$integer
-      val <- canEldt[[1, 6]]
-      canEldt[[1, 6]] <- mult*val
-    }
-    rpivotTable(data =   canEldt   ,  rows = c( "Party",    "Province"),
+    rpivotTable(data =   canEldf   ,  rows = c(     "Province"),
                 vals = "votes", aggregatorName = "Sum", rendererName = "Treemap")
-  } )
+  })
+ 
 }
 
 shinyApp(ui = ui, server = server)
