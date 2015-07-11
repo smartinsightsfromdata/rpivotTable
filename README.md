@@ -59,8 +59,8 @@ rpivotTable
 This version 0.1.5.0 is based on (the minimised version of):
 
 * pivottable 1.6.3
-* jquery 1.11.2
-* jquery.ui 1.11.4
+* jquery 1.11.0 (compatibility with shiny 1.12.1)
+* jquery.ui 1.10.4 (compatibility with shiny 1.12.1)
 * jquery.ui.touch-punch 0.2.3
 * d3 3.5.5
 * c3 0.4.10
