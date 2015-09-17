@@ -12,11 +12,11 @@
 #'              \href{https://github.com/nicolaskruchten/pivottable/wiki/Aggregators}{see Wiki for more details} )
 #'              to prepopulate the pivot table.
 #' @param vals String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number)
-#' @param rendererName String name specifying how the data will be rendered (e.g. Table, Treemap etc.) {see Wiki for more details}.
 #' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
-#'              can be passed to \code{pivotUI}
-#' @param width
-#' @param height
+#'              can be passed to \code{pivotUI}.  For example, \code{rendererName} name specifying how the data 
+#'              will be rendered (e.g. Table, Treemap etc.) {see Wiki for more details}.
+#' @param width width parameter
+#' @param height height parameter
 #'
 #' @import htmlwidgets
 #'
@@ -76,6 +76,9 @@ stop( "data should be a data.frame or data.table", call.=F)
 
 #' Widget output function for use in Shiny
 #'
+#' @param outputId Shiny output ID
+#' @param width width default '100\%'
+#' @param height height default '400px'
 #' @export
 rpivotTableOutput <- function(outputId, width = '100%', height = '400px'){
     shinyWidgetOutput(outputId, 'rpivotTable', width, height, package = 'rpivotTable')
@@ -83,8 +86,32 @@ rpivotTableOutput <- function(outputId, width = '100%', height = '400px'){
 
 #' Widget render function for use in Shiny
 #'
+#' @param expr rpivotTable expression
+#' @param env environment
+#' @param quoted logical, default = FALSE
 #' @export
 renderRpivotTable <- function(expr, env = parent.frame(), quoted = FALSE) {
     if (!quoted) { expr <- substitute(expr) } # force quoted
     shinyRenderWidget(expr, rpivotTableOutput, env, quoted = TRUE)
 }
+
+
+#' Example data set
+#'
+#' Example data set.
+#'
+#' @name canEldt
+#' @details Description of data set.
+#' @docType data
+#' @keywords datasets
+#' @usage data(canEldt)
+#' @examples
+#' data(canEldt)
+#' canEldt$votes <- round(runif(nrow(canEldt), min=500, max=15000))
+#' \dontrun{
+#' rpivotTable(data = canEldt, rows = c("Party", "Province"), 
+#'             vals = "votes", aggregatorName = "Sum", 
+#'             rendererName = "Treemap")
+#' }
+
+NULL

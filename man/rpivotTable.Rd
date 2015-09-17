@@ -23,13 +23,12 @@ to prepopulate the pivot table.}
 \item{vals}{String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number)}
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
-can be passed to \code{pivotUI}}
+can be passed to \code{pivotUI}.  For example, \code{rendererName} name specifying how the data
+will be rendered (e.g. Table, Treemap etc.) {see Wiki for more details}.}
 
-\item{width}{}
+\item{width}{width parameter}
 
-\item{height}{}
-
-\item{rendererName}{String name specifying how the data will be rendered (e.g. Table, Treemap etc.) {see Wiki for more details}.}
+\item{height}{height parameter}
 }
 \description{
 Use pivottable.js in R with the power and convenience of a
