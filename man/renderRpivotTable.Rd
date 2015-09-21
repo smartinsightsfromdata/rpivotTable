@@ -6,6 +6,13 @@
 \usage{
 renderRpivotTable(expr, env = parent.frame(), quoted = FALSE)
 }
+\arguments{
+\item{expr}{rpivotTable expression}
+
+\item{env}{environment}
+
+\item{quoted}{logical, default = FALSE}
+}
 \description{
 Widget render function for use in Shiny
 }

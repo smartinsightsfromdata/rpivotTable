@@ -6,6 +6,13 @@
 \usage{
 rpivotTableOutput(outputId, width = "100\%", height = "400px")
 }
+\arguments{
+\item{outputId}{Shiny output ID}
+
+\item{width}{width default '100\%'}
+
+\item{height}{height default '400px'}
+}
 \description{
 Widget output function for use in Shiny
 }
