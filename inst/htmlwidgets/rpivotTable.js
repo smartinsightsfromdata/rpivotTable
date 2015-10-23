@@ -21,7 +21,12 @@ HTMLWidgets.widget({
         $.pivotUtilities.d3_renderers,
         $.pivotUtilities.c3_renderers
       );
-
+      
+      if (typeof x.params.sorters != "undefined") {
+        if (typeof x.params.sorters[0] == "string") {
+          x.params.sorters = eval("("+x.params.sorters[0]+")")
+        }
+      }
 
       $('#'+el.id).pivotUI(
       		x.data, x.params
