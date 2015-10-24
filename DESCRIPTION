@@ -1,7 +1,7 @@
 Package: rpivotTable
 Title: Interface to pivottable library, to have a powerful pivot table on R, knitr & shiny
 Date: 2015-9-17
-Version: 0.1.5.3
+Version: 0.1.5.4
 Authors@R: c(
     person("Nicolas", "kruchten", role = c("aut", "cph"),
        comment = "pivottable library in inst/htmlwidgets/lib, http://nicolas.kruchten.com/pivottable/examples/"),

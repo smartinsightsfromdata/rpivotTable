@@ -29,7 +29,7 @@ HTMLWidgets.widget({
       }
 
       $('#'+el.id).pivotUI(
-      		x.data, x.params
+      		x.data, x.params, true
       );
 
     },

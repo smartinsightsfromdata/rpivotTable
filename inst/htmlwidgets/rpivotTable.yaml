@@ -1,11 +1,11 @@
 dependencies:
 - name: jquery
   version: 1.11.0
-  src: htmlwidgets/lib/jquery/dist
+  src: htmlwidgets/lib/jquery-1.11.0
   script: jquery.min.js
 - name: jquery-ui
   version: 1.10.4
-  src: htmlwidgets/lib/jqueryui
+  src: htmlwidgets/lib/jqueryui-1.10.4
   script:
   - jquery-ui.min.js
   - jquery.ui.touch-punch.min.js
