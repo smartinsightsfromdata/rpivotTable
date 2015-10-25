@@ -27,6 +27,17 @@ HTMLWidgets.widget({
           x.params.sorters = eval("("+x.params.sorters[0]+")")
         }
       }
+      
+      if (typeof x.params.onRefresh != "undefined") {
+      	console.log("Found onrefresh");
+      	console.log(x.params.onRefresh);
+        if (typeof x.params.onRefresh == "string") {
+          console.log("its a string");
+          x.params.onRefresh = eval("("+x.params.onRefresh+")");
+          console.log("after eval");
+          console.log("x.params.onRefresh");
+        }
+      }
 
       $('#'+el.id).pivotUI(
       		x.data, x.params, true
