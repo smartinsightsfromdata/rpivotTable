@@ -28,6 +28,7 @@ rpivotTable <- function(
     cols = NULL,
     aggregatorName = NULL,
     vals = NULL,
+    onRefresh = NULL,
     ...,
     width = NULL,
     height = NULL
