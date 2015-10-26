@@ -29,8 +29,7 @@ HTMLWidgets.widget({
       }
       
       if (typeof x.params.onRefresh != "undefined") {
-      	console.log(x.params.onRefresh)
-        //  x.params.onRefresh = onRefresh[0];
+        x.params.onRefresh = x.params.onRefresh[0];
       }
 
       $('#'+el.id).pivotUI(
