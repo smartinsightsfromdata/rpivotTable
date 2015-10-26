@@ -1,0 +1,95 @@
+---
+title: "rpivotTable"
+author: "Enzo Martoglio"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### rpivotTable:  A pivot table for R
+
+The rpivotTable package is an R [htmlwidget](http://htmlwidgets.org)  built around the [pivottable](http://nicolas.kruchten.com/pivottable/examples/)  library.
+
+PivotTable.js is a Javascript Pivot Table library with drag'n'drop functionality built on top of jQuery/jQueryUI and  written in CoffeeScript by Nicolas Kruchten at Datacratic. It is available under a MIT license
+
+Many thanks to everyone that contributes bugs and prs, and of course thanks to Nicolas Krutchen for pivottable.
+
+#### Installation
+
+The rpivotTable package depends on the development version of the [htmlwidgets](https://github.com/ramnathv/htmlwidgets) package so you need to install both packages. You can do this using the **devtools** package as follows:
+
+```{r, fig.show='hold'}
+# devtools::install_github(c("ramnathv/htmlwidgets", "smartinsightsfromdata/rpivotTable"))
+```
+
+#### Usage
+
+Just plug in your `data.frame`, `table` or `data.table` to `rpivotTable()`.
+
+It is as simple as this:
+
+```{r, fig.show='hold'}
+library(rpivotTable)
+```
+
+```{r, fig.show='hold'}
+data(mtcars)
+rpivotTable(mtcars,rows="gear", cols=c("cyl","carb"),width="100%", height="400px")
+```
+The pivot table should appear in your RStudio Viewer or your browser of choice.
+
+For additional technical information please refer to the examples and explanations [here](https://github.com/nicolaskruchten/pivottable/wiki/). 
+
+`rpivotTable` parameters decide how the pivot table will look like the firs time it is opened:
+
+* `data` can be a `data.frame` `table` or `data.table`. Nothing else is needed.  If only the data is selected the pivot table opens with nothing on rows and columns (but you can at any time drag and drop any variable in rows or columns at your leasure)
+* `rows` and `cols` allow the user to create a report, i.e. to indicate which element will be on rows and columns.
+* `aggregatorName` indicates the type of aggregation. Options here are numerous: Count, Count Unique Values, List Unique Values, Sum, Integer Sum, Average, Sum over Sum, 80% Upper Bound, 80% Lower Bound, Sum as Fraction of Total, Sum as Fraction of Rows, Sum as Fraction of Columns, Count as Fraction of Total, Count as Fraction of Rows, Count as Fraction of Columns
+* `vals` specifies the variable to use with `aggregatorName` (if any). 
+* `renderers` dictates the type of graphic rendering used for display, like Table, Treemap etc.
+* `sorters` allow to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example. It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work)
+
+For example, to display a table with frequency of colour combinations of eyes and hair, you can specify:
+
+```{r}
+library(rpivotTable)
+data(HairEyeColor)
+rpivotTable(data = HairEyeColor, rows = "Hair",cols="Eye", vals = "Freq", aggregatorName = "Sum", rendererName = "Table", width="100%", height="400px")
+```
+
+
+This will display the resulting table. Switching the `aggregatorName` to `Sum as Fraction of Rows` will give the row percentages (and the column totals will give the percentages over the gran total).
+
+To display the `Hair` values in reverse order:
+
+```{r}
+library(rpivotTable)
+data(HairEyeColor)
+rpivotTable(data = HairEyeColor, rows = "Hair",cols="Eye", vals = "Freq", aggregatorName = "Sum", rendererName = "Table", sorters = "
+function(attr) { 
+var sortAs = $.pivotUtilities.sortAs;
+if (attr == \"Hair\") { return sortAs([\"Red\", \"Brown\", \"Blond\", \"Black\"]); }
+}", width="100%", height="400px")
+```
+
+This function could be useful for example to sort time divisions like months of the year or days of the week in their proper, non alphabetical order (thanks to palatinuse for its implementation).
+
+Or if you want to include it as part of your `dplyr` / `magrittr` pipeline, you can do that also.
+
+
+```{r, fig.show='hold'}
+suppressMessages(library(dplyr))
+iris %>%
+tbl_df %>%
+filter( Sepal.Width > 3 & Sepal.Length > 5 ) %>%
+rpivotTable(rows="Sepal.Width",  rendererName="Treemap")
+```
+
+
