@@ -45,25 +45,27 @@ Candidate,Party,Province,Age,Gender
 "Truppe, Susan",Conservative,Ontario,53,Female
 "Young, Wai",Conservative,British Columbia,52,Female'
 con <- textConnection(canData)
-canEldf <- read.csv(con, header=TRUE, stringsAsFactors = FALSE)
-canEldf$votes <- round(runif(nrow(canEldf), min=500, max=15000))
+canadianElections <- read.csv(con, header=TRUE, stringsAsFactors = FALSE)
+canadianElections$votes <- round(runif(nrow(canadianElections), min=500, max=15000))
 
+# save(file="./data/canadianElections.rda",canadianElections )
 
 ui = shinyUI(fluidPage(
   fluidRow( rpivotTableOutput("pivot")
-  ,fluidRow( ggvisOutput("lgraph"))
+  # , fluidRow( ggvisOutput("lgraph") )
 )))
 
 server = function(input, output, session) {
 reactive({
-    canEldf %>% select(Province,Party,votes) %>% group_by(Party, Province) %>% summarise(votes=sum(votes)) -> candf
-    ggvis(candf, ~Province, ~votes, fill = ~ Party) %>%
+  canadianElections %>% select(Province,Party,votes) %>% group_by(Party, Province) %>% summarise(votes=sum(votes)) -> candf
+    ggvis(canadianElections, ~Province, ~votes, fill = ~ Party) %>%
       layer_bars(width=0.4) %>%  scale_nominal("fill")
 }) %>%  bind_shiny("lgraph") 
 
   output$pivot <- renderRpivotTable({
-    rpivotTable(data =   canEldf   ,  rows = c(     "Province"),
-                vals = "votes", aggregatorName = "Sum", rendererName = "Treemap")
+    rpivotTable(data =   canadianElections   ,  rows = c( "Province"),cols="Party",
+                vals = "votes", aggregatorName = "Sum", rendererName = "Table"
+                , width="50%", height="550px")
   })
  
 }

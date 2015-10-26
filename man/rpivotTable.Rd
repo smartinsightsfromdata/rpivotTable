@@ -5,10 +5,11 @@
 \title{pivottable.js in R}
 \usage{
 rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
-  vals = NULL, ..., width = NULL, height = NULL)
+  vals = NULL, sorter = NULL, rendererName = NULL, ..., width = NULL,
+  height = NULL)
 }
 \arguments{
-\item{data}{data.frame or data.table (R>=1.9.5 for safety) with data to use in the pivot table}
+\item{data}{data.frame or data.table (R>=1.9.6 for safety) with data to use in the pivot table}
 
 \item{rows}{String name of the column in the data.frame to prepopulate
 the \strong{rows} of the pivot table.}
@@ -16,15 +17,17 @@ the \strong{rows} of the pivot table.}
 \item{cols}{String name of the column in the data.frame to prepopulate
 the \strong{columns} of the pivot table.}
 
-\item{aggregatorName}{String name of the pivottable.js aggregator (
-\href{https://github.com/nicolaskruchten/pivottable/wiki/Aggregators}{see Wiki for more details} )
-to prepopulate the pivot table.}
+\item{aggregatorName}{String name of the pivottable.js aggregator to prepopulate the pivot table.}
 
-\item{vals}{String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number)}
+\item{vals}{String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).}
+
+\item{sorter}{String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
+It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).}
+
+\item{rendererName}{String name of the renderer selected, e.g. Table, Heatmap, Treemap etc.}
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
-can be passed to \code{pivotUI}.  For example, \code{rendererName} name specifying how the data
-will be rendered (e.g. Table, Treemap etc.) {see Wiki for more details}.}
+             can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.}
 
 \item{width}{width parameter}
 

@@ -33,36 +33,23 @@ Please refer to the examples and explanations [here](https://github.com/nicolask
 * `aggregatorName` indicates the type of aggregation. Options here are numerous: Count, Count Unique Values, List Unique Values, Sum, Integer Sum, Average, Sum over Sum, 80% Upper Bound, 80% Lower Bound, Sum as Fraction of Total, Sum as Fraction of Rows, Sum as Fraction of Columns, Count as Fraction of Total, Count as Fraction of Rows, Count as Fraction of Columns
 * `vals` specifies the variable to use with `aggregatorName`. 
 * `renderers` dictates the type of graphic element used for display, like Table, Treemap etc.
+* `sorters` allow to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example. It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work)
 
-For example, to display a data.table dt with election data (partially similar to the example on the pivottable site), you can specify:
+For example, to display a pivot table with frequency of colour combinations of eyes and hair, you can specify:
 
-```R
-rpivotTable(data = dt, rows = "Province", vals = "votes", aggregatorName = "Sum", rendererName = "Treemap")
+```
+data(HairEyeColor)
+rpivotTable(data = HairEyeColor, rows = "Hair",cols="Eye", vals = "Freq", aggregatorName = "Sum", rendererName = "Table", width="100%", height="400px")
 ```
 
-This will display the Treemap of the votes per Province.
+This will display a cross tab with the frequency of eyes by hair colour. Dragging & dropping (slicing & dicing) categorical variables in rows and columns changes the shape of the table.
 
-Or if you want to include it as part of your `dplyr` / `magrittr` pipeline, you can do that also:
+If you want to include it as part of your `dplyr` / `magrittr` pipeline, you can do that also:
 
 ```R
 library(dplyr)
-
 iris %>%
 tbl_df %>%
 filter( Sepal.Width > 3 ) %>%
 rpivotTable
 ```
-
-#### News
-
-
-This version 0.1.5.0 is based on (the minimised version of):
-
-* pivottable 1.6.3
-* jquery 1.11.0 (compatibility with shiny 1.12.1)
-* jquery.ui 1.10.4 (compatibility with shiny 1.12.1)
-* jquery.ui.touch-punch 0.2.3
-* d3 3.5.5
-* c3 0.4.10
-
-

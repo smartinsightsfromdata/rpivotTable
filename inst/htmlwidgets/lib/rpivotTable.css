@@ -1,17 +1,17 @@
-body {font-family: Verdana;}
-            .node {
-              border: solid 1px white;
-              font: 8px sans-serif;
-              line-height: 10px;
-              overflow: hidden;
-              position: absolute;
-              text-indent: 2px;
-            }
- .node { border: solid 1px white;}
+.table {font-family: Helvetica;}
+.node  {
+    border: solid 1px white;
+    font: 9px tahoma;
+    line-height: 10px;
+    overflow: hidden;
+    text-indent: 2px;
+    position : absolute;
+
+    }
  .c3-line, .c3-focused {stroke-width: 3px !important;}
  .c3-bar {stroke: white !important; stroke-width: 1;}
  .c3 text { font-size: 12px; color: grey;}
  .tick line {stroke: white;}
  .c3-axis path {stroke: grey;}
-
-
+ .c3-circle { opacity: 1 ! important;}
+ .pvtRows, .pvtCols {background: #54B4EB none repeat scroll 0 0;}

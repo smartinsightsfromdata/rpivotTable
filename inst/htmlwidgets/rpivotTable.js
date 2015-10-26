@@ -6,7 +6,7 @@ HTMLWidgets.widget({
 
     initialize: function(el, width, height) {
 
-	    return {}
+	    return {};
 
     },
 

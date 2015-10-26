@@ -4,4 +4,6 @@
 .Rproj.user
 .Rhistory
 .DS_Store
+.gitignore
 packrat/lib*/
+inst/doc
