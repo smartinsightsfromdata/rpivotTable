@@ -14,9 +14,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #### News
-Version 0.1.5.6
 
-* adjusted DESCRIPTION for cran submission
+Version 0.1.5.7: 
+
+* `onRefresh` Added ability to get back into shiny parameters choosen by the user
+* Added shiny example of `onRefresh` and of dynamically change parameters
+* More clean up for CRAN submission 
+
+Version 0.1.5.6: 
+
+* General clean up for CRAN submission
 
 Version 0.1.5.5: 
 
