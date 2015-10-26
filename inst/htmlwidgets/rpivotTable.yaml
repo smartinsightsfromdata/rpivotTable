@@ -5,7 +5,7 @@ dependencies:
   script: jquery.min.js
 - name: jquery-ui
   version: 1.10.4
-  src: htmlwidgets/lib/jqueryui-1.10.4
+  src: htmlwidgets/lib/jqueryui-1.11.4
   script:
   - jquery-ui.min.js
   - jquery.ui.touch-punch.min.js
