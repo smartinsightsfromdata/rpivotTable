@@ -29,19 +29,8 @@ HTMLWidgets.widget({
       }
       
       if (typeof x.params.onRefresh != "undefined") {
-      	console.log("Found onrefresh");
-      	console.log(x.params.onRefresh);
-        if (typeof x.params.onRefresh[0] == "string") {
-          console.log("its a string");
-          x.params.onRefresh = eval("("+x.params.onRefresh[0]+")");
-          console.log("after eval");
-          console.log(x.params.onRefresh);
-        }
-        else {
-          console.log("its NOT a string");
-          x.params.onRefresh = onRefresh[0];
-          console.log("after eval");
-          console.log(x.params.onRefresh);        	
+      	console.log(x.params.onRefresh)
+        //  x.params.onRefresh = onRefresh[0];
         }
       }
 
