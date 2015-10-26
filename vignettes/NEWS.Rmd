@@ -2,7 +2,7 @@
 title: "NEWS"
 author: "Enzo Martoglio"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,6 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #### News
+Version 0.1.5.6
+
+* adjusted DESCRIPTION for cran submission
 
 Version 0.1.5.5: 
 
