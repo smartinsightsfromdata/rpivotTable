@@ -28,7 +28,6 @@ rpivotTable <- function(
     cols = NULL,
     aggregatorName = NULL,
     vals = NULL,
-    onRefresh = NULL,
     ...,
     width = NULL,
     height = NULL
@@ -45,7 +44,6 @@ stop( "data should be a data.frame or data.table", call.=F)
       cols = cols,
       aggregatorName = aggregatorName,
       vals = vals,
-      onRefresh = onRefresh,
       ...
     )
 
