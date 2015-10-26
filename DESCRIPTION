@@ -1,12 +1,11 @@
 Package: rpivotTable
-Title: Build powerful pivot tables and dynamically slice & dice / drag & drop your data with rpivotTable.
+Title: Build Powerful Pivot Tables and Dynamically Slice & Dice / Drag & Drop your Data with rpivotTable
 Date: 2015-10-27
 Version: 0.1.5.7
 Authors@R: c(
     person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
-    person("Nicolas", "kruchten", role = c("ctb", "cph"), comment = "pivottable library in inst/htmlwidgets/lib, http://nicolas.kruchten.com/pivottable/examples/")
+    person("Nicolas", "kruchten", role = c("ctb", "cph"), comment = "pivottable library")
     )
-Author: Enzo Martoglio [aut, cre]
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
 Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab) and dynamically slice & dice / drag & drop your data. 
     rpiotTable is a wrapper of PivotTable.js, a powerful open-source Pivot Table 

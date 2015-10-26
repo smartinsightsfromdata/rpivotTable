@@ -27,7 +27,14 @@ It is especially useful with time divisions like days of the week or months of t
 \item{rendererName}{String name of the renderer selected, e.g. Table, Heatmap, Treemap etc.}
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
-             can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.}
+           can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
+           A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
+           An example is: onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
+           This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.
+           See the example onRefresh-shiny.R for an example of how to use this feature.
+           Example of usage could be:
+           These parameters could be saved and re-sent to the user.
+           Alternative they could be used to subset the data item for saving as csv.}
 
 \item{width}{width parameter}
 
