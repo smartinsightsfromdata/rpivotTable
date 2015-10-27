@@ -19,6 +19,6 @@ Widget output function for use in Shiny
 \examples{
 # A simple example - this goes in the ui part of a shiny application
 
-  rpivotTableOutput("pivot")
+  # rpivotTableOutput("pivot")
 }
 

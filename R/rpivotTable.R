@@ -123,7 +123,7 @@ rpivotTable <- function(
 #' 
 #'   # A simple example - this goes in the ui part of a shiny application
 #'   
-#'   rpivotTableOutput("pivot")
+#'   # rpivotTableOutput("pivot")
 #' 
 #' 
 #' @export
@@ -141,11 +141,11 @@ rpivotTableOutput <- function(outputId, width = '100%', height = '500px'){
 #' 
 #'   # A simple example - this goes in the server part of a shiny application
 #'   
-#'   output$pivot <- renderRpivotTable({
-#'             rpivotTable(data =   canadianElections   ,  rows = c( "Province"),cols="Party",
-#'             vals = "votes", aggregatorName = "Sum", rendererName = "Table",
-#'             width="100%", height="500px")
-#'   })
+#'   # output$pivot <- renderRpivotTable({
+#'   #          rpivotTable(data =   canadianElections   ,  rows = c( "Province"),cols="Party",
+#'   #          vals = "votes", aggregatorName = "Sum", rendererName = "Table",
+#'   #          width="100%", height="500px")
+#'   # })
 #' 
 #' 
 #' 
