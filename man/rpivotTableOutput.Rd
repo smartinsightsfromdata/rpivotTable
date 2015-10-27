@@ -16,4 +16,9 @@ rpivotTableOutput(outputId, width = "100\%", height = "500px")
 \description{
 Widget output function for use in Shiny
 }
+\examples{
+# A simple example - this goes in the ui part of a shiny application
+
+  rpivotTableOutput("pivot")
+}
 

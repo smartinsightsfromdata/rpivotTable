@@ -26,6 +26,30 @@
 #'            These parameters could be saved and re-sent to the user.
 #'            Alternative they could be used to subset the data item for saving as csv.
 #'              
+#' @examples 
+#' 
+#'  # use Titanic dataset provided in base R - simple creation with just data
+#'
+#'  rpivotTable( Titanic ) 
+#'
+#'  # prepopulate multiple columns and multiple rows
+#'  
+#'  rpivotTable( Titanic, rows = c("Class","Sex"), cols = c("Age","Survived" ) )
+#'  
+#'  
+#'  # A more complete example:
+#'  
+#'  rpivotTable(
+#'  Titanic,
+#'  rows = "Survived",
+#'  cols = c("Class","Sex"),
+#'  aggregatorName = "Sum as Fraction of Columns",
+#'  vals = "Freq",
+#'  rendererName = "Table Barchart"
+#'  )
+#'
+#'
+#'
 #'
 #' @import htmlwidgets
 #'
@@ -94,6 +118,14 @@ rpivotTable <- function(
 #' @param outputId Shiny output ID
 #' @param width width default '100\%'
 #' @param height height default '500px'
+#' 
+#' @examples 
+#' 
+#'   # A simple example - this goes in the ui part of a shiny application
+#'   
+#'   rpivotTableOutput("pivot")
+#' 
+#' 
 #' @export
 rpivotTableOutput <- function(outputId, width = '100%', height = '500px'){
     shinyWidgetOutput(outputId, 'rpivotTable', width, height, package = 'rpivotTable')
@@ -104,6 +136,19 @@ rpivotTableOutput <- function(outputId, width = '100%', height = '500px'){
 #' @param expr rpivotTable expression
 #' @param env environment
 #' @param quoted logical, default = FALSE
+#' 
+#' @examples 
+#' 
+#'   # A simple example - this goes in the server part of a shiny application
+#'   
+#'   output$pivot <- renderRpivotTable({
+#'             rpivotTable(data =   canadianElections   ,  rows = c( "Province"),cols="Party",
+#'             vals = "votes", aggregatorName = "Sum", rendererName = "Table",
+#'             width="100%", height="500px")
+#'   })
+#' 
+#' 
+#' 
 #' @export
 renderRpivotTable <- function(expr, env = parent.frame(), quoted = FALSE) {
     if (!quoted) { expr <- substitute(expr) } # force quoted

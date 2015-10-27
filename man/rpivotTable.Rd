@@ -44,4 +44,25 @@ It is especially useful with time divisions like days of the week or months of t
 Use pivottable.js in R with the power and convenience of a
 htmlwidget.
 }
+\examples{
+# use Titanic dataset provided in base R - simple creation with just data
+
+ rpivotTable( Titanic )
+
+ # prepopulate multiple columns and multiple rows
+
+ rpivotTable( Titanic, rows = c("Class","Sex"), cols = c("Age","Survived" ) )
+
+
+ # A more complete example:
+
+ rpivotTable(
+ Titanic,
+ rows = "Survived",
+ cols = c("Class","Sex"),
+ aggregatorName = "Sum as Fraction of Columns",
+ vals = "Freq",
+ rendererName = "Table Barchart"
+ )
+}
 

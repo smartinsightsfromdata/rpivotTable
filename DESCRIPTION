@@ -8,7 +8,7 @@ Authors@R: c(
     )
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
 Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab) and dynamically slice & dice / drag 'n' drop your data. 
-    'rpivotTable' is a wrapper of 'pivottable', a powerful open-source Pivot Table widget
+    'rpivotTable' is a wrapper of 'pivottable', a powerful open-source Pivot Table library
     implemented in 'JavaScript' by Nicolas Kruchten.  Aligned to 'pivottable' v1.6.3.
 Depends: 
     R (>= 3.1.0)
