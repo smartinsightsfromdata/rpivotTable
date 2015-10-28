@@ -5,7 +5,7 @@
 \title{pivottable.js in R}
 \usage{
 rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
-  vals = NULL, sorter = NULL, rendererName = NULL, ..., width = NULL,
+  vals = NULL, rendererName = NULL, sorter = NULL, ..., width = NULL,
   height = NULL)
 }
 \arguments{
@@ -21,10 +21,10 @@ the \strong{columns} of the pivot table.}
 
 \item{vals}{String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).}
 
+\item{rendererName}{String name of the renderer selected, e.g. Table, Heatmap, Treemap etc.}
+
 \item{sorter}{String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).}
-
-\item{rendererName}{String name of the renderer selected, e.g. Table, Heatmap, Treemap etc.}
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
            can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.

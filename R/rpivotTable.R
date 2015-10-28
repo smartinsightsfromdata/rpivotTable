@@ -61,13 +61,12 @@ rpivotTable <- function(
     cols = NULL,
     aggregatorName = NULL,
     vals = NULL,
-    sorter = NULL,
     rendererName = NULL,
+    sorter = NULL,
     ...,
     width = NULL,
     height = NULL
 ) {
-
   # check for data.frame, data.table, or array
   if( length(intersect(class(data),c("data.frame", "data.table", "table","structable", "ftable" ))) == 0 ) {
     stop( "data should be a data.frame, data.table, or table", call.=F)
@@ -81,8 +80,8 @@ rpivotTable <- function(
       cols = cols,
       aggregatorName = aggregatorName,
       vals = vals,
-      sorter = NULL,
-      rendererName = NULL,
+      rendererName = rendererName,
+      sorter = sorter,
       ...
     )
 

@@ -23,7 +23,7 @@ HTMLWidgets.widget({
       );
       
       if (typeof x.params.sorters != "undefined") {
-        if (typeof x.params.sorters[0] == "string") {
+      if (typeof x.params.sorters[0] == "string") {
           x.params.sorters = eval("("+x.params.sorters[0]+")")
         }
       }
@@ -34,7 +34,7 @@ HTMLWidgets.widget({
       
       $('#'+el.id).pivotUI(
       		x.data, x.params, true
-      );
+      ); 
 
     },
 
