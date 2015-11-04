@@ -1,20 +1,21 @@
 Package: rpivotTable
 Title: Build Powerful Pivot Tables and Dynamically Slice & Dice your Data
 Date: 2015-10-28
-Version: 0.1.5.8
+Version: 0.1.5.9
 Authors@R: c(
     person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
     person("Nicolas", "kruchten", role = c("ctb", "cph"), comment = "pivottable library")
     )
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
-Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab) and dynamically slice & dice / drag 'n' drop your data. 
-    'rpivotTable' is a wrapper of 'pivottable', a powerful open-source Pivot Table library
-    implemented in 'JavaScript' by Nicolas Kruchten.  Aligned to 'pivottable' v1.6.3.
-Depends: 
+Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-
+    Tab) and dynamically slice & dice / drag 'n' drop your data. 'rpivotTable' is a
+    wrapper of 'pivottable', a powerful open-source Pivot Table library implemented
+    in 'JavaScript' by Nicolas Kruchten. Aligned to 'pivottable' v1.6.3.
+Depends:
     R (>= 3.1.0)
-Imports: 
+Imports:
     htmlwidgets (>= 0.4)
-Suggests: 
+Suggests:
     testthat,
     knitr,
     rmarkdown,
@@ -23,5 +24,7 @@ Suggests:
     data.table
 Enhances: shiny (>= 0.12)
 License: MIT + file LICENSE
-URL: https://github.com/smartinsightsfromdata/, http://smartinsightsfromdata.github.io
+URL: https://github.com/smartinsightsfromdata/, http://
+    smartinsightsfromdata.github.io
 VignetteBuilder: knitr
+RoxygenNote: 5.0.0

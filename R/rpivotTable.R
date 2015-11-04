@@ -10,9 +10,15 @@
 #'              the \strong{columns} of the pivot table.
 #' @param aggregatorName String name of the pivottable.js aggregator to prepopulate the pivot table.
 #' @param vals String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).
-#' @param rendererName String name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
+#' @param rendererName List name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
 #' @param sorter String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 #'              It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).
+#' @param inclusions List this optional parameter allows to filter the members of a particular dimension "by inclusion". 
+#'              Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
+#'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
+#' @param exclusions String this optional parameter allows to filter the members of a particular dimension "by exclusion". 
+#'              Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions=list(Class="Crew")`.
+#'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed. 
 #' @param width width parameter
 #' @param height height parameter
 #' 
@@ -48,6 +54,19 @@
 #'  rendererName = "Table Barchart"
 #'  )
 #'
+#' # An example with inclusions and exclusions filters:
+#' 
+#' rpivotTable(
+#' Titanic,
+#' rows = "Survived",
+#' cols = c("Class","Sex"),
+#' aggregatorName = "Sum as Fraction of Columns",
+#' inclusions = list( Survived = list("Yes")),
+#' exclusions= list( Class = list( "Crew")),
+#' vals = "Freq",
+#' rendererName = "Table Barchart"
+#' )
+#'
 #'
 #'
 #'
@@ -63,6 +82,8 @@ rpivotTable <- function(
     vals = NULL,
     rendererName = NULL,
     sorter = NULL,
+    exclusions = NULL,
+    inclusions = NULL,
     ...,
     width = NULL,
     height = NULL
@@ -85,19 +106,26 @@ rpivotTable <- function(
       ...
     )
 
-    # remove NULL parameters
-    params <- Filter(Negate(is.null), params)
-
-    # auto_box vectors of length 1
+ #   auto_box vectors of length 1
     params <- Map( function(p){
-        if(length(p) == 1){
+        if(length(p) == 1 ){
           p = list(p)
         }
         return(p)
       }
       , params
     )
+    # exlusions & inclusions need to be "excluded" from auto_boxing
+  par <- list(
+           exclusions = exclusions,
+           inclusions = inclusions 
+         )
 
+params <- c(params, par)
+
+    # remove NULL parameters
+    params <- Filter(Negate(is.null), params)
+    
     x <- list(
       data = data,
       params = params

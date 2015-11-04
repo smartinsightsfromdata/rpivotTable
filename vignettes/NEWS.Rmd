@@ -15,6 +15,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### News
 
+Version 0.1.5.9: 
+
+* Document `inclusions` and `exclusions` explicitly
+* Amend the case when a single `inclusions` or `exclusions` was specified (wrongly auto_boxed)
+* css of filtered dimension now in bold (to help in case of many dimensions)
+
+
+Version 0.1.5.8: 
+
+* Amended a regression crept in during CRAN submissions (`rendererName` stopped being "programmable")
+
 Version 0.1.5.7: 
 
 * `onRefresh` Added ability to get back into shiny parameters choosen by the user

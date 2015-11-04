@@ -15,3 +15,5 @@
  .c3-axis path {stroke: grey;}
  .c3-circle { opacity: 1 ! important;}
  .pvtRows, .pvtCols {background: #54B4EB none repeat scroll 0 0;}
+ .pvtFilteredAttribute { font-weight: bold;}
+    

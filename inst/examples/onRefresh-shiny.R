@@ -15,7 +15,7 @@ server <- function(input, output) {
   
 output$pivotRefresh <- renderText({
 
-cnames <- list("cols","rows","vals", "exclusions","aggregatorName", "rendererName")
+cnames <- list("cols","rows","vals", "exclusions","inclusions", "aggregatorName", "rendererName")
 # Apply a function to all keys, to get corresponding values
 allvalues <- lapply(cnames, function(name) {
   item <- input$myPivotData[[name]]
@@ -29,7 +29,20 @@ paste(allvalues, collapse = "\n")
 })
 
 output$mypivot = renderRpivotTable({
-    rpivotTable(data=cars, onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }"))
+    rpivotTable(
+      Titanic,
+      rows = "Survived",
+      cols = c("Class","Sex"),
+      aggregatorName = "Sum as Fraction of Columns",
+      exclusions = list(
+        Survived = list("No")
+        # ,
+        # Class = list("1st")
+      ),
+      vals = "Freq",
+      rendererName = "Table Barchart",
+      onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
+      )
   })
 }
 
