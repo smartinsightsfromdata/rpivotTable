@@ -15,9 +15,13 @@ HTMLWidgets.widget({
 
 	    var derivers = $.pivotUtilities.derivers;
       var tpl = $.pivotUtilities.aggregatorTemplates;
+      
+      // set locale to "en" which is the default for pivottable
+      //  this eases code later
+      if(typeof(x.locale) === "undefined") x.locale = "en";
 
       x.params.renderers = $.extend(
-        $.pivotUtilities.renderers,
+        $.pivotUtilities.locales[x.locale].renderers,
         $.pivotUtilities.d3_renderers,
         $.pivotUtilities.c3_renderers
       );
@@ -31,9 +35,9 @@ HTMLWidgets.widget({
       if (typeof x.params.onRefresh != "undefined") {
         x.params.onRefresh = x.params.onRefresh[0];
       }
-
+      
       $('#'+el.id).pivotUI(
-      		x.data, x.params, true
+      		x.data, x.params, true, x.locale
       ); 
 
     },
