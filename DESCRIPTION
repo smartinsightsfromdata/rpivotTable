@@ -27,4 +27,4 @@ License: MIT + file LICENSE
 URL: https://github.com/smartinsightsfromdata/, http://
     smartinsightsfromdata.github.io
 VignetteBuilder: knitr
-RoxygenNote: 5.0.0
+RoxygenNote: 4.1.1.9001

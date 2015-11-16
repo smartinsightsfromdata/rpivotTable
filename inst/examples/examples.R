@@ -92,3 +92,8 @@ rpivotTable(
   , aggregatorName = "Count"
   , rendererName = "Treemap"
 )
+
+
+# change locale for non English use
+ptbl <- rpivotTable(mtcars)
+change_locale(ptbl, "pt")
