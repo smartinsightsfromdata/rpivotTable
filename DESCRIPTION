@@ -1,26 +1,30 @@
 Package: rpivotTable
-Title: Interface to pivottable library, to have a powerful pivot table on R, knitr & shiny
-Date: 2015-9-17
-Version: 0.1.5.3
+Title: Build Powerful Pivot Tables and Dynamically Slice & Dice your Data
+Date: 2015-10-28
+Version: 0.1.5.9
 Authors@R: c(
-    person("Nicolas", "kruchten", role = c("aut", "cph"),
-       comment = "pivottable library in inst/htmlwidgets/lib, http://nicolas.kruchten.com/pivottable/examples/"),
-    person("Enzo", "Martoglio", role = c("aut", "cre"),
-       comment = "R interface", email = "enzo@smartinsightsfromdata.com")
+    person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
+    person("Nicolas", "kruchten", role = c("ctb", "cph"), comment = "pivottable library")
     )
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
-Description: This package is a wrapper of PivotTable.js is an open-source
-    Javascript Pivot Table (aka Pivot Grid, Pivot Chart, Cross-Tab)
-    implementation with drag'n'drop functionality written by Nicolas Kruchten.
-    Aligned to pivottable v1.6.3.
+Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-
+    Tab) and dynamically slice & dice / drag 'n' drop your data. 'rpivotTable' is a
+    wrapper of 'pivottable', a powerful open-source Pivot Table library implemented
+    in 'JavaScript' by Nicolas Kruchten. Aligned to 'pivottable' v1.6.3.
 Depends:
     R (>= 3.1.0)
 Imports:
     htmlwidgets (>= 0.4)
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown,
+    devtools,
+    dplyr,
+    data.table
 Enhances: shiny (>= 0.12)
 License: MIT + file LICENSE
-Materials: README
-LazyData: true
-URL: https://github.com/smartinsightsfromdata/, http://smartinsightsfromdata.github.io
+URL: https://github.com/smartinsightsfromdata/, http://
+    smartinsightsfromdata.github.io
+VignetteBuilder: knitr
+RoxygenNote: 4.1.1.9001

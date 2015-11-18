@@ -5,24 +5,22 @@
 library(rpivotTable)
 
 # use Titanic dataset provided in base R
-titanic_df = as.data.frame(Titanic)
-
 # simple creation with just data
-rpivotTable( titanic_df )
+rpivotTable( Titanic )
 
 # prepopulate a row
 #   with one - need to make sure passed as array (auto_unbox = F)
-rpivotTable( titanic_df, rows = "Class" )
+rpivotTable( Titanic, rows = "Class" )
 # prepopulate multiple rows
-rpivotTable( titanic_df, rows = c("Class","Sex" ) )
+rpivotTable( Titanic, rows = c("Class","Sex" ) )
 # prepopulate a column
-rpivotTable( titanic_df, rows = "Class", cols = "Survived" )
+rpivotTable( Titanic, rows = "Class", cols = "Survived" )
 # prepopulate multiple columns and multiple rows
-rpivotTable( titanic_df, rows = c("Class","Sex"), cols = c("Age","Survived" ) )
+rpivotTable( Titanic, rows = c("Class","Sex"), cols = c("Age","Survived" ) )
 
 # prepopulate aggregatorName and vals
 rpivotTable(
-  titanic_df
+  Titanic
   , rows = c("Class","Sex")
   , cols = "Survived"
   , aggregatorName = "Sum"
@@ -31,17 +29,17 @@ rpivotTable(
 
 #  prepopulate with an non-parameter (ie ...)
 rpivotTable(
-  titanic_df
+  Titanic
   , rows = c("Class","Sex","Age")
   , cols = "Survived"
   , aggregatorName = "Sum as Fraction of Rows"
   , vals = "Freq"
-  , rendererName = "Heatmap"
+
 )
 
 # just another neat example
 rpivotTable(
-  titanic_df
+  Titanic
   , rows = "Survived"
   , cols = c("Class","Sex")
   , aggregatorName = "Sum as Fraction of Columns"
@@ -94,3 +92,8 @@ rpivotTable(
   , aggregatorName = "Count"
   , rendererName = "Treemap"
 )
+
+
+# change locale for non English use
+ptbl <- rpivotTable(mtcars)
+change_locale(ptbl, "pt")

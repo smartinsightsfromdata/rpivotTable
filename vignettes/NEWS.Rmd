@@ -1,0 +1,57 @@
+---
+title: "NEWS"
+author: "Enzo Martoglio"
+date: "`r Sys.Date()`"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### News
+
+Version 0.1.5.9: 
+
+* Document `inclusions` and `exclusions` explicitly
+* Amend the case when a single `inclusions` or `exclusions` was specified (wrongly auto_boxed)
+* css of filtered dimension now in bold (to help in case of many dimensions)
+
+
+Version 0.1.5.8: 
+
+* Amended a regression crept in during CRAN submissions (`rendererName` stopped being "programmable")
+
+Version 0.1.5.7: 
+
+* `onRefresh` Added ability to get back into shiny parameters choosen by the user
+* Added shiny example of `onRefresh` and of dynamically change parameters
+* More clean up for CRAN submission 
+
+Version 0.1.5.6: 
+
+* General clean up for CRAN submission
+
+Version 0.1.5.5: 
+
+* new css (blue) for parts of the table
+* general clean up in preparation to cran submission
+* added tables as allowed data items for th epivot table (with forced conversion to data.frame)
+
+Version 0.1.5.4:
+
+* Introduced sorters (thanks to palatinuse for this implementation).
+* Fixed a bug preventing to update at run time parameters of the pivot table within the same data item
+
+Versions 0.1.5.x are based on (the minimised version of):
+
+* pivottable 1.6.3
+* jquery 1.11.0 (compatibility with shiny 1.12.1)
+* jquery.ui 1.10.4 (compatibility with shiny 1.12.1)
+* jquery.ui.touch-punch 0.2.3
+* d3 3.5.5
+* c3 0.4.10
