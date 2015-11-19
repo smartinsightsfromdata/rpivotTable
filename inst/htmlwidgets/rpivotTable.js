@@ -26,6 +26,25 @@ HTMLWidgets.widget({
         $.pivotUtilities.c3_renderers
       );
       
+      // temporary hack to make Portuguese d3 and c3 renderers
+      if(x.locale === "pt"){
+        x.params.renderers["Mapa de Árvore"] = x.params.renderers["Treemap"];
+        x.params.renderers["Gráfico de Linha"] = x.params.renderers["Line Chart"];
+        x.params.renderers["Gráfico de Barras"] = x.params.renderers["Bar Chart"];
+        x.params.renderers["Gráfico de Barras Empilhadas"] = x.params.renderers["Stacked Bar Chart"];
+        x.params.renderers["Gráfico de Área"] = x.params.renderers["Area Chart"];
+        x.params.renderers["Gráfico de Dispersão"] = x.params.renderers["Scatter Chart"];
+        
+        // delete the English
+        delete(x.params.renderers["Treemap"]);
+        delete(x.params.renderers["Line Chart"]);
+        delete(x.params.renderers["Bar Chart"]);
+        delete(x.params.renderers["Stacked Bar Chart"]);
+        delete(x.params.renderers["Area Chart"]);
+        delete(x.params.renderers["Scatter Chart"]);
+
+      }
+      
       if (typeof x.params.sorters != "undefined") {
       if (typeof x.params.sorters[0] == "string") {
           x.params.sorters = eval("("+x.params.sorters[0]+")")
