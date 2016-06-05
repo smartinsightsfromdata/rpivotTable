@@ -2,7 +2,7 @@ context("parameters")
 
 test_that("parameters handled correctly",{
   expect_match(
-    rpivotTable(data.frame(),rows = c("arow"))$x$params$rows
+    rpivotTable(data.frame(),rows = c("arow"))$x$params$rows[[1]]
     ,"arow"
   )
   # one row or column should be made list so will be boxed for JSON
@@ -11,7 +11,7 @@ test_that("parameters handled correctly",{
     ,"list"
   )
   expect_match(
-    rpivotTable(data.frame(),rows = c("arow"))$x$params$rows
+    rpivotTable(data.frame(),rows = c("arow"))$x$params$rows[[1]]
     ,"arow"
   )
   expect_identical(
@@ -24,7 +24,7 @@ test_that("parameters handled correctly",{
     ,"list"
   )
   expect_match(
-    rpivotTable(data.frame(),cols = c("acol"))$x$params$cols
+    rpivotTable(data.frame(),cols = c("acol"))$x$params$cols[[1]]
     ,"acol"
   )
   expect_identical(
@@ -33,7 +33,7 @@ test_that("parameters handled correctly",{
   )
 
   expect_match(
-    rpivotTable(data.frame(),aggregatorName="Sum")$x$params$aggregatorName
+    rpivotTable(data.frame(),aggregatorName="Sum")$x$params$aggregatorName[[1]]
     ,"Sum"
   )
 
@@ -42,7 +42,7 @@ test_that("parameters handled correctly",{
     ,"list"
   )
   expect_match(
-    rpivotTable(data.frame(),vals="aval")$x$params$vals
+    rpivotTable(data.frame(),vals="aval")$x$params$vals[[1]]
     ,"aval"
   )
 })
