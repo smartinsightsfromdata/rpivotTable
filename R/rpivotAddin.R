@@ -1,13 +1,8 @@
 getDataFrames = function()
 {
-    # ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x){is.data.frame(get(x))})]
-  if ((length(ls()) > 0) & (length(sapply(.GlobalEnv, is.data.frame)) > 0) & any(sapply(.GlobalEnv, is.data.frame)))
-    return(names(which(sapply(.GlobalEnv, is.data.frame))))
-  else
-  {
+  if ((length(ls()) == 0) | (length(sapply(.GlobalEnv, is.data.frame)) == 0) | (any(sapply(.GlobalEnv, is.data.frame))==F))
     data(iris)
-    return(names(which(sapply(.GlobalEnv, is.data.frame))))
-  }
+  return(names(which(sapply(.GlobalEnv, is.data.frame))))
 }
 
 rpivotAddin <- function() {
