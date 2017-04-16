@@ -1,0 +1,11 @@
+^.*\.Rproj$
+^\.Rbuildignore$
+^.*\.DS_Store$
+^.*Rmd$
+^\.DS_Store$
+^\.git$
+^\.git/$
+^\.gitignore/$
+^\.Rproj\.user/$
+
+^\.Rproj\.user$

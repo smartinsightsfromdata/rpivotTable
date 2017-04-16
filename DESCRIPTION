@@ -1,7 +1,7 @@
 Package: rpivotTable
 Title: Build Powerful Pivot Tables and Dynamically Slice & Dice your Data
-Date: 2016-05-10
-Version: 0.1.5.10
+Date: 2017-04-16
+Version: 0.2.0
 Authors@R: c(
     person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
     person("Nicolas", "kruchten", role = c("ctb", "cph"), comment = "pivottable library")
@@ -10,11 +10,11 @@ Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
 Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-
     Tab) and dynamically slice & dice / drag 'n' drop your data. 'rpivotTable' is a
     wrapper of 'pivottable', a powerful open-source Pivot Table library implemented
-    in 'JavaScript' by Nicolas Kruchten. Aligned to 'pivottable' v1.6.3.
+    in 'JavaScript' by Nicolas Kruchten. Aligned to 'pivottable' v2.11.0.
 Depends:
-    R (>= 3.1.0)
+    R (>= 3.2.0)
 Imports:
-    htmlwidgets (>= 0.4)
+    htmlwidgets (>= 0.5)
 Suggests:
     testthat,
     htmltools,
@@ -28,4 +28,4 @@ License: MIT + file LICENSE
 URL: https://github.com/smartinsightsfromdata/, http://
     smartinsightsfromdata.github.io
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

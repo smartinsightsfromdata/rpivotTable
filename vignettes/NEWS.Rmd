@@ -15,6 +15,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### News
 
+Version 0.2:
+
+* Library updated to 2.11.0 version of pivottable
+* Major clean-up and new features added by Nicolas in the pivottable library (e.g. the ability to order barcharts directly in the UI: fantastic!)
+* Localization in German, Russian etc. added (but not tested)
+* Updated versions of jquery and jquery-ui
+* Minor changes / corrections to README and other docs
+* Simplifications in some of the folder structure
+
 Version 0.1.5.9: 
 
 * Document `inclusions` and `exclusions` explicitly
