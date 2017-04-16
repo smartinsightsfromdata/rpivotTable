@@ -4,7 +4,8 @@ Date: 2017-04-16
 Version: 0.2.0
 Authors@R: c(
     person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
-    person("Nicolas", "Kruchten", role = c("ctb", "cph"), comment = "pivottable library")
+    person("Nicolas", "Kruchten", role = c("ctb", "cph"), comment = "pivottable library"),
+    person("Kenton", "Russell", role = c("ctb"), email = "kent.russell@timelyportfolio.com")
     )
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
 Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab) 
