@@ -54,7 +54,7 @@ If you want to include it as part of your `dplyr` / `magrittr` pipeline, you can
 ```R
 library(dplyr)
 iris %>%
-tbl_df %>%
-filter( Sepal.Width > 3 ) %>%
-rpivotTable
+  tbl_df() %>%
+  filter( Sepal.Width > 3 ) %>%
+  rpivotTable()
 ```
