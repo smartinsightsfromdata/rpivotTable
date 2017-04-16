@@ -24,4 +24,3 @@ Widget output function for use in Shiny
 
 
 }
-

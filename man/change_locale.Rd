@@ -30,4 +30,3 @@ For more discussion, see
    library(rpivotTable)
    change_locale(rpivotTable(mtcars),"pt")
 }
-
