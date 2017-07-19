@@ -6,7 +6,8 @@
 \usage{
 rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
   vals = NULL, rendererName = NULL, sorter = NULL, exclusions = NULL,
-  inclusions = NULL, ..., width = NULL, height = NULL)
+  inclusions = NULL, subtotals = FALSE, ..., width = NULL,
+  height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{data.frame or data.table (R>=1.9.6 for safety) with data to use in the pivot table}
@@ -34,6 +35,8 @@ Please note that this only pre-selects the visible filter(s) on the pivot table:
 Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
 Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.}
 
+\item{subtotals}{Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}.}
+
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
 A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
@@ -47,6 +50,8 @@ Alternative they could be used to subset the data item for saving as csv.}
 \item{width}{width parameter}
 
 \item{height}{height parameter}
+
+\item{elementId}{String valid CSS selector id for the rpivotTable container.}
 }
 \description{
 Use pivottable.js in R with the power and convenience of a

@@ -19,12 +19,23 @@ HTMLWidgets.widget({
       // set locale to "en" which is the default for pivottable
       //  this eases code later
       if(typeof(x.locale) === "undefined") x.locale = "en";
-
+      
       x.params.renderers = $.extend(
         $.pivotUtilities.locales[x.locale].renderers,
         $.pivotUtilities.d3_renderers,
         $.pivotUtilities.c3_renderers
       );
+      
+      // if subtotals then add subtotal renderer
+      if(x.subtotals) {
+        x.params.renderers = $.extend(
+          $.pivotUtilities.subtotal_renderers,
+          $.pivotUtilities.locales[x.locale].renderers,
+          $.pivotUtilities.d3_renderers,
+          $.pivotUtilities.c3_renderers
+        );
+        x.params.dataClass = $.pivotUtilities.SubtotalPivotData;
+      }
       
       // temporary hack to make Portuguese d3 and c3 renderers
       if(x.locale === "pt"){
