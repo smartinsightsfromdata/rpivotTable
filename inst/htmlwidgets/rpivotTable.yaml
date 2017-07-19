@@ -20,16 +20,16 @@ dependencies:
   src: htmlwidgets/lib/d3
   script: d3.v3.min.js
 - name: pivottable
-  version: 2.11.0
+  version: 2.13.0
   src: htmlwidgets/lib/pivottable
   stylesheet: pivot.min.css
   script: pivot.min.js
 - name: pivottable_d3renderers
-  version: 2.11.0
+  version: 2.13.0
   src: htmlwidgets/lib/pivottable
   script: d3_renderers.min.js
 - name: pivottable_c3renderers
-  version: 2.11.0
+  version: 2.13.0
   src: htmlwidgets/lib/pivottable
   script: c3_renderers.min.js
 - name: polyfill
