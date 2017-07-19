@@ -19,8 +19,10 @@
 #' @param exclusions String this optional parameter allows to filter the members of a particular dimension "by exclusion". 
 #'              Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions=list(Class="Crew")`.
 #'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed. 
+#' @param subtotals Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}.
 #' @param width width parameter
 #' @param height height parameter
+#' @param elementId String valid CSS selector id for the rpivotTable container.
 #' 
 #' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 #'            can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
@@ -84,9 +86,11 @@ rpivotTable <- function(
     sorter = NULL,
     exclusions = NULL,
     inclusions = NULL,
+    subtotals = FALSE,
     ...,
     width = NULL,
-    height = NULL
+    height = NULL,
+    elementId = NULL
 ) {
   # check for data.frame, data.table, or array
   if( length(intersect(class(data),c("data.frame", "data.table", "table","structable", "ftable" ))) == 0 ) {
@@ -128,15 +132,23 @@ params <- c(params, par)
     
     x <- list(
       data = data,
-      params = params
+      params = params,
+      subtotals = subtotals
     )
+    
+    dependencies <- NULL
+    if(subtotals) {
+      dependencies <- list(subtotal_dep())
+    }
 
     htmlwidgets::createWidget(
       name = 'rpivotTable',
       x,
       width = width,
       height = height,
-      package = 'rpivotTable'
+      package = 'rpivotTable',
+      dependencies = dependencies,
+      elementId = elementId
     )
 }
 
