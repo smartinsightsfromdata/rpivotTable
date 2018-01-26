@@ -11,6 +11,7 @@ change_locale(pivottable = NULL, locale = NULL)
 
 \item{locale}{\code{character} of locale to use.  Valid locale options are
 \itemize{
+   \item{cs}
    \item{da}
    \item{de}
    \item{es}
