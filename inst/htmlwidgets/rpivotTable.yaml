@@ -20,18 +20,26 @@ dependencies:
   src: htmlwidgets/lib/d3
   script: d3.v3.min.js
 - name: pivottable
-  version: 2.11.0
+  version: 2.19.0
   src: htmlwidgets/lib/pivottable
   stylesheet: pivot.min.css
-  script: pivot.min.js
-- name: pivottable_d3renderers
-  version: 2.11.0
-  src: htmlwidgets/lib/pivottable
-  script: d3_renderers.min.js
-- name: pivottable_c3renderers
-  version: 2.11.0
-  src: htmlwidgets/lib/pivottable
-  script: c3_renderers.min.js
+  script:
+    - pivot.min.js
+    - d3_renderers.min.js
+    - c3_renderers.min.js
+    - pivot.cs.min.js
+    - pivot.da.min.js
+    - pivot.de.min.js
+    - pivot.es.min.js
+    - pivot.fr.min.js
+    - pivot.it.min.js
+    - pivot.nl.min.js
+    - pivot.pl.min.js
+    - pivot.pt.min.js
+    - pivot.ru.min.js
+    - pivot.sq.min.js
+    - pivot.tr.min.js
+    - pivot.zh.min.js
 - name: polyfill
   version: 0.1
   src: htmlwidgets/lib/polyfill

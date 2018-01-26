@@ -26,20 +26,20 @@ the \strong{columns} of the pivot table.}
 \item{sorter}{String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).}
 
-\item{exclusions}{String this optional parameter allows to filter the members of a particular dimension "by exclusion". 
+\item{exclusions}{String this optional parameter allows to filter the members of a particular dimension "by exclusion".
 Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions=list(Class="Crew")`.
 Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.}
 
-\item{inclusions}{List this optional parameter allows to filter the members of a particular dimension "by inclusion". 
+\item{inclusions}{List this optional parameter allows to filter the members of a particular dimension "by inclusion".
 Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
 Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.}
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
-can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
+can be passed to \code{pivotUI}. See Nicolas' Wiki for more details.
 A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
 An example is: onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
 This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.
-See the example onRefresh-shiny.R for an example of how to use this feature.  
+See the example onRefresh-shiny.R for an example of how to use this feature.
 Example of usage could be:
 These parameters could be saved and re-sent to the user.
 Alternative they could be used to subset the data item for saving as csv.}
@@ -56,15 +56,15 @@ htmlwidget.
 
  # use Titanic dataset provided in base R - simple creation with just data
 
- rpivotTable( Titanic ) 
+ rpivotTable( Titanic )
 
  # prepopulate multiple columns and multiple rows
- 
+
  rpivotTable( Titanic, rows = c("Class","Sex"), cols = c("Age","Survived" ) )
- 
- 
+
+
  # A more complete example:
- 
+
  rpivotTable(
  Titanic,
  rows = "Survived",
