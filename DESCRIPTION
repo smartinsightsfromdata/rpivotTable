@@ -4,14 +4,14 @@ Date: 2017-04-16
 Version: 0.2.0
 Authors@R: c(
     person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
-    person("Nicolas", "Kruchten", role = c("ctb", "cph"), comment = "pivottable library"),
+    person("Nicolas", "Kruchten", role = c("ctb", "cph"), comment = "pivottable library", email = "nicolas@kruchten.com"),
     person("Kenton", "Russell", role = c("ctb"), email = "kent.russell@timelyportfolio.com")
     )
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
-Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab) 
+Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab)
     and dynamically slice & dice / drag 'n' drop your data. 'rpivotTable' is a
     wrapper of 'pivottable', a powerful open-source Pivot Table library implemented
-    in 'JavaScript' by Nicolas Kruchten. Aligned to 'pivottable' v2.11.0.
+    in 'JavaScript' by Nicolas Kruchten. Aligned to 'pivottable' v2.19.0.
 Depends:
     R (>= 3.2.0)
 Imports:
