@@ -45,5 +45,9 @@ test_that("parameters handled correctly",{
     rpivotTable(data.frame(),vals="aval")$x$params$vals[[1]]
     ,"aval"
   )
+  expect_identical(
+    rpivotTable(data.frame(),subtotals = TRUE)$x$subtotals
+    ,TRUE
+  )
 })
 

@@ -13,38 +13,56 @@
 #' @param rendererName List name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
 #' @param sorter String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 #'              It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).
-#' @param inclusions List this optional parameter allows to filter the members of a particular dimension "by inclusion". 
+#' @param inclusions List this optional parameter allows to filter the members of a particular dimension "by inclusion".
 #'              Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
 #'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
-#' @param exclusions String this optional parameter allows to filter the members of a particular dimension "by exclusion". 
+#' @param exclusions String this optional parameter allows to filter the members of a particular dimension "by exclusion".
 #'              Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions=list(Class="Crew")`.
-#'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed. 
+#'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
+#' @param locale \code{character} of locale to use.  Valid locale options are
+#'         \itemize{
+#'            \item{cs}
+#'            \item{da}
+#'            \item{de}
+#'            \item{es}
+#'            \item{fr}
+#'            \item{it}
+#'            \item{nl}
+#'            \item{pl}
+#'            \item{pt}
+#'            \item{ru}
+#'            \item{sq}
+#'            \item{tr}
+#'            \item{zh}
+#'         }
+#' @param subtotals Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}. Using this parameter will set all renderer names to the english locale.
 #' @param width width parameter
 #' @param height height parameter
-#' 
+#' @param elementId String valid CSS selector id for the rpivotTable container.
+#'
 #' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 #'            can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
 #'            A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
 #'            An example is: onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
 #'            This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.
-#'            See the example onRefresh-shiny.R for an example of how to use this feature.  
+#'            See the example onRefresh-shiny.R for an example of how to use this feature.
 #'            Example of usage could be:
 #'            These parameters could be saved and re-sent to the user.
 #'            Alternative they could be used to subset the data item for saving as csv.
-#'              
-#' @examples 
-#' 
+#'
+#' @examples
+#'
 #'  # use Titanic dataset provided in base R - simple creation with just data
 #'
-#'  rpivotTable( Titanic ) 
+#'  rpivotTable( Titanic )
 #'
 #'  # prepopulate multiple columns and multiple rows
-#'  
+#'
 #'  rpivotTable( Titanic, rows = c("Class","Sex"), cols = c("Age","Survived" ) )
-#'  
-#'  
+#'
+#'
 #'  # A more complete example:
-#'  
+#'
 #'  rpivotTable(
 #'  Titanic,
 #'  rows = "Survived",
@@ -55,7 +73,7 @@
 #'  )
 #'
 #' # An example with inclusions and exclusions filters:
-#' 
+#'
 #' rpivotTable(
 #' Titanic,
 #' rows = "Survived",
@@ -84,15 +102,18 @@ rpivotTable <- function(
     sorter = NULL,
     exclusions = NULL,
     inclusions = NULL,
+    locale = "en",
+    subtotals = FALSE,
     ...,
-    width = NULL,
-    height = NULL
+    width = 800,
+    height = 600,
+    elementId = NULL
 ) {
   # check for data.frame, data.table, or array
   if( length(intersect(class(data),c("data.frame", "data.table", "table","structable", "ftable" ))) == 0 ) {
     stop( "data should be a data.frame, data.table, or table", call.=F)
   }
-  
+
   #convert table to data.frame
   if( length(intersect(c("table","structable", "ftable"), class(data))) > 0 ) data <- as.data.frame( data )
 
@@ -116,19 +137,21 @@ rpivotTable <- function(
       , params
     )
     # exlusions & inclusions need to be "excluded" from auto_boxing
-  par <- list(
+    par <- list(
            exclusions = exclusions,
-           inclusions = inclusions 
+           inclusions = inclusions
          )
 
-params <- c(params, par)
+    params <- c(params, par)
 
     # remove NULL parameters
     params <- Filter(Negate(is.null), params)
-    
+
     x <- list(
       data = data,
-      params = params
+      params = params,
+      locale = locale,
+      subtotals = subtotals
     )
 
     htmlwidgets::createWidget(
@@ -136,6 +159,7 @@ params <- c(params, par)
       x,
       width = width,
       height = height,
+      elementId = elementId,
       package = 'rpivotTable'
     )
 }
@@ -145,14 +169,14 @@ params <- c(params, par)
 #' @param outputId Shiny output ID
 #' @param width width default '100\%'
 #' @param height height default '500px'
-#' 
-#' @examples 
-#' 
+#'
+#' @examples
+#'
 #'   # A simple example - this goes in the ui part of a shiny application
-#'   
+#'
 #'   # rpivotTableOutput("pivot")
-#' 
-#' 
+#'
+#'
 #' @export
 rpivotTableOutput <- function(outputId, width = '100%', height = '500px'){
     shinyWidgetOutput(outputId, 'rpivotTable', width, height, package = 'rpivotTable')
@@ -163,19 +187,19 @@ rpivotTableOutput <- function(outputId, width = '100%', height = '500px'){
 #' @param expr rpivotTable expression
 #' @param env environment
 #' @param quoted logical, default = FALSE
-#' 
-#' @examples 
-#' 
+#'
+#' @examples
+#'
 #'   # A simple example - this goes in the server part of a shiny application
-#'   
+#'
 #'   # output$pivot <- renderRpivotTable({
 #'   #          rpivotTable(data =   canadianElections   ,  rows = c( "Province"),cols="Party",
 #'   #          vals = "votes", aggregatorName = "Sum", rendererName = "Table",
 #'   #          width="100%", height="500px")
 #'   # })
-#' 
-#' 
-#' 
+#'
+#'
+#'
 #' @export
 renderRpivotTable <- function(expr, env = parent.frame(), quoted = FALSE) {
     if (!quoted) { expr <- substitute(expr) } # force quoted

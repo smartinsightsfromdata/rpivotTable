@@ -5,6 +5,7 @@ Version: 0.2.0
 Authors@R: c(
     person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
     person("Nicolas", "Kruchten", role = c("ctb", "cph"), comment = "pivottable library", email = "nicolas@kruchten.com"),
+    person("Nagarajan", "Chinnasamy", role = c("ctb", "cph"), comment = "pivottable subtotal plugin"),
     person("Kenton", "Russell", role = c("ctb"), email = "kent.russell@timelyportfolio.com")
     )
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>

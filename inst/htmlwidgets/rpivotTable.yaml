@@ -40,6 +40,11 @@ dependencies:
     - pivot.sq.min.js
     - pivot.tr.min.js
     - pivot.zh.min.js
+- name: subtotal
+  version: 1.10.0
+  src: htmlwidgets/lib/subtotal
+  stylesheet: subtotal.min.css
+  script: subtotal.min.js
 - name: polyfill
   version: 0.1
   src: htmlwidgets/lib/polyfill
