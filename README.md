@@ -59,3 +59,7 @@ iris %>%
   filter( Sepal.Width > 3 ) %>%
   rpivotTable()
 ```
+
+#### Latest news
+
+I'm happy to announce that Nicolas Kruchten has officialy joined the rpivotTable project. Many thanks to him for the work on the current release.
