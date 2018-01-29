@@ -39,6 +39,7 @@ Please refer to the examples and explanations [here](https://github.com/nicolask
 * `vals` specifies the variable to use with `aggregatorName`. 
 * `renderers` dictates the type of graphic element used for display, like Table, Treemap etc.
 * `sorters` allow to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example. It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work)
+* `subtotals` will allow  to dynamically select / deselect subtotals
 
 For example, to display a pivot table with frequency of colour combinations of eyes and hair, you can specify:
 

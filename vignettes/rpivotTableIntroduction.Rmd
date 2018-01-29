@@ -29,6 +29,12 @@ The rpivotTable package depends on  [htmlwidgets](https://github.com/ramnathv/ht
 # devtools::install_github(c("ramnathv/htmlwidgets", "smartinsightsfromdata/rpivotTable"))
 ```
 
+Or directly from CRAN:
+
+```{r, fig.show='hold'}
+# install.packages('htmlwidgets', 'rpivotTable')
+```
+
 #### Usage
 
 Call the package with
@@ -36,6 +42,7 @@ Call the package with
 ```{r, fig.show='hold'}
 library(rpivotTable)  # No need to explicitly load htmlwidgets: this is done automatically
 ```
+
 Just plug in your `data.frame`, `table` or `data.table` to `rpivotTable()`.
 
 It is as simple as this:
@@ -81,6 +88,13 @@ if (attr == \"Hair\") { return sortAs([\"Red\", \"Brown\", \"Blond\", \"Black\"]
 ```
 
 This function could be useful for example to sort time divisions like months of the year or days of the week in their proper, non alphabetical order (thanks to palatinuse for its implementation).
+
+You can also use the very visual new subtotals:
+
+```{r, fig.show='hold'}
+data(mtcars)
+rpivotTable(mtcars,rows="gear", cols=c("cyl","carb"),subtotals=TRUE, width="100%", height="400px")
+```
 
 Or if you want to include it as part of your `dplyr` / `magrittr` pipeline, you can do that also.
 
