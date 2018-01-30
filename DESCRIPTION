@@ -28,5 +28,5 @@ Suggests:
 Enhances: shiny (>= 0.12)
 License: MIT + file LICENSE
 URL: https://github.com/smartinsightsfromdata, http://smartinsightsfromdata.github.io
-VignetteBuilder: knitr
+VignetteBuilder: rmarkdown
 RoxygenNote: 6.0.1
