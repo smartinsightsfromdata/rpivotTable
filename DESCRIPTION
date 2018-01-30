@@ -3,11 +3,13 @@ Title: Build Powerful Pivot Tables and Dynamically Slice & Dice your Data
 Date: 2018-01-29
 Version: 0.3.0
 Authors@R: c(
-    person("Enzo", "Martoglio", role = c("aut", "cre"), comment = "R interface", email = "enzo@smartinsightsfromdata.com"),
-    person("Nicolas", "Kruchten", role = c("ctb", "cph"), comment = "pivottable library", email = "nicolas@kruchten.com"),
-    person("Nagarajan", "Chinnasamy", role = c("ctb", "cph"), comment = "pivottable subtotal plugin"),
+    person("Enzo", "Martoglio", role = c("aut", "cre"),  email = "enzo@smartinsightsfromdata.com"),
+    person("Nicolas", "Kruchten", role = c("ctb", "cph"),  email = "nicolas@kruchten.com"),
+    person("Nagarajan", "Chinnasamy", role = c("ctb", "cph")),
     person("Kenton", "Russell", role = c("ctb"), email = "kent.russell@timelyportfolio.com")
     )
+Author: Enzo Martoglio  [aut, cre], Nicolas kruchten [ctb, cph], Nagarajan Chinnasamy [ctb, cph],
+    Kenton Russell [ctb]
 Maintainer: Enzo Martoglio  <enzo@smartinsightsfromdata.com>
 Description: Build powerful pivot tables (aka Pivot Grid, Pivot Chart, Cross-Tab)
     and dynamically slice & dice / drag 'n' drop your data. 'rpivotTable' is a
@@ -28,5 +30,5 @@ Suggests:
 Enhances: shiny (>= 0.12)
 License: MIT + file LICENSE
 URL: https://github.com/smartinsightsfromdata, http://smartinsightsfromdata.github.io
-VignetteBuilder: rmarkdown
+VignetteBuilder: knitr
 RoxygenNote: 6.0.1

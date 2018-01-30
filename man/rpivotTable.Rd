@@ -6,7 +6,8 @@
 \usage{
 rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
   vals = NULL, rendererName = NULL, sorter = NULL, exclusions = NULL,
-  inclusions = NULL, ..., width = NULL, height = NULL)
+  inclusions = NULL, locale = "en", subtotals = FALSE, ..., width = 800,
+  height = 600, elementId = NULL)
 }
 \arguments{
 \item{data}{data.frame or data.table (R>=1.9.6 for safety) with data to use in the pivot table}
@@ -34,8 +35,27 @@ Please note that this only pre-selects the visible filter(s) on the pivot table:
 Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
 Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.}
 
+\item{locale}{\code{character} of locale to use.  Valid locale options are
+\itemize{
+   \item{cs}
+   \item{da}
+   \item{de}
+   \item{es}
+   \item{fr}
+   \item{it}
+   \item{nl}
+   \item{pl}
+   \item{pt}
+   \item{ru}
+   \item{sq}
+   \item{tr}
+   \item{zh}
+}}
+
+\item{subtotals}{Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}. Using this parameter will set all renderer names to the english locale.}
+
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
-can be passed to \code{pivotUI}. See Nicolas' Wiki for more details.
+can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
 A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
 An example is: onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
 This setting makes available server-side a function input$myPivotData that gives back a list (of lists) with all the slice & dice parameters offered by pivottable.
@@ -47,6 +67,8 @@ Alternative they could be used to subset the data item for saving as csv.}
 \item{width}{width parameter}
 
 \item{height}{height parameter}
+
+\item{elementId}{String valid CSS selector id for the rpivotTable container.}
 }
 \description{
 Use pivottable.js in R with the power and convenience of a

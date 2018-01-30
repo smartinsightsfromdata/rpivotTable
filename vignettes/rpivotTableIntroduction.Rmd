@@ -4,7 +4,7 @@ author: "Enzo Martoglio"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{rpivotTable Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -108,5 +108,4 @@ tbl_df %>%
 filter( Sepal.Width > 3 & Sepal.Length > 5 ) %>%
 rpivotTable(rows="Sepal.Width",  rendererName="Treemap")
 ```
-
 

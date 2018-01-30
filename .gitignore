@@ -6,5 +6,4 @@
 .DS_Store
 .gitignore
 packrat/lib*/
-inst/doc
 .RData

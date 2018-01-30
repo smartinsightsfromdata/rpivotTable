@@ -1,4 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.Rbuildignore
+^\.Rbuildignore\.user$
 ^\.DS_Store
+.git
+.gitignore
+.Rbuildignore.Rproj
+.Rproj.user
+.Rbuildignore.user
