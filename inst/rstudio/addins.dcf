@@ -1,0 +1,4 @@
+Name: rpivotTable
+Description: Pivot Table
+Binding: rpivotAddin
+Interactive: true

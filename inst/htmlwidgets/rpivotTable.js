@@ -14,6 +14,10 @@ HTMLWidgets.widget({
             x.params.sorters = eval("("+x.params.sorters[0]+")")
           }
       }
+      
+      if (typeof x.params.onRefresh != "undefined") {
+        x.params.onRefresh = x.params.onRefresh[0];
+      }
 
       if (typeof x.params.onRefresh != "undefined") {
         x.params.onRefresh = x.params.onRefresh[0];
