@@ -109,3 +109,16 @@ filter( Sepal.Width > 3 & Sepal.Length > 5 ) %>%
 rpivotTable(rows="Sepal.Width",  rendererName="Treemap")
 ```
 
+#### Notes
+
+When embedding an rprivotTable into a knitr project (especially flexdashboard projects), it is recommended to include the following in your project's CSS file: 
+
+```{css}
+.rpivotTable
+    {
+    overflow-x: auto;
+    overflow-y: auto;
+    }
+```
+
+This will ensure that the pivot table has scrollbars if its content is too tall or wide for its display area.
