@@ -62,6 +62,7 @@ For additional technical information please refer to the examples and explanatio
 * `aggregatorName` indicates the type of aggregation. Options here are numerous: Count, Count Unique Values, List Unique Values, Sum, Integer Sum, Average, Sum over Sum, 80% Upper Bound, 80% Lower Bound, Sum as Fraction of Total, Sum as Fraction of Rows, Sum as Fraction of Columns, Count as Fraction of Total, Count as Fraction of Rows, Count as Fraction of Columns
 * `vals` specifies the variable to use with `aggregatorName` (if any).
 * `renderers` dictates the type of graphic rendering used for display, like Table, Treemap etc.
+* `rendererOptions` provides the ability to customize the renderers' displays and behavior.
 * `sorters` allow to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example. It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work)
 
 For example, to display a table with frequency of colour combinations of eyes and hair, you can specify:
@@ -92,20 +93,77 @@ This function could be useful for example to sort time divisions like months of 
 You can also use the very visual new subtotals:
 
 ```{r, fig.show='hold'}
+library(rpivotTable)
 data(mtcars)
 rpivotTable(mtcars,rows="gear", cols=c("cyl","carb"),subtotals=TRUE, width="100%", height="400px")
 ```
 
-Or if you want to include it as part of your `dplyr` / `magrittr` pipeline, you can do that also.
-
+And even customize how the graphs are rendered:
 
 ```{r, fig.show='hold'}
-# suppressMessages(
+library(rpivotTable)
+MyColors <- c(rgb(186,150,155, maxColorValue=255), rgb(238,221,130, maxColorValue=255),
+ rgb(205,150,205, maxColorValue=255))
+
+c3RenderOptions <- list(size = list(height=300, width=600),# change the size of the barchart
+ zoom = list(enabled=T), # add zooming
+ # use a custom color scheme
+ color = list(pattern=as.list(MyColors)))
+
+rpivotTable(Titanic,
+ rows = "Survived",
+ cols = c("Sex"),
+ rendererName = "Bar Chart",
+ # pass options to the c3 renderer to customize the barchart
+ rendererOptions = list(c3 = c3RenderOptions),
+ width="100%", height="400px"
+ )
+```
+
+As well as add drilldown functionality to table cells:
+
+```{r}
+library(rpivotTable)
+rpivotTable(Titanic, 
+ rows = c("Survived"), 
+ cols = c("Sex"),
+ rendererOptions = list(
+ # these will be the rendering options passed to the "table" renderer
+ table = list(
+ # popup a list of the observations' genders associated with the cell that you double click on
+ clickCallback = htmlwidgets::JS('function(e, value, filters, pivotData) {
+  var names = [];
+  pivotData.forEachMatchingRecord(filters,
+  function(record){ names.push(record.Sex); });
+  alert(names.join(\"\\n\"));
+  }'))),
+ width="100%", height="400px"
+ )
+```
+
+If you want to include it as part of your `dplyr` / `magrittr` pipeline, you can do that also.
+
+```{r, fig.show='hold'}
+library(rpivotTable)
+suppressMessages(
   library(dplyr)
-  # )
+  )
 iris %>%
 tbl_df %>%
 filter( Sepal.Width > 3 & Sepal.Length > 5 ) %>%
-rpivotTable(rows="Sepal.Width",  rendererName="Treemap")
+rpivotTable(rows="Sepal.Width",  rendererName="Treemap", width="100%", height="400px")
 ```
 
+#### Notes
+
+When embedding an rprivotTable into a knitr project (especially flexdashboard projects), it is recommended to include the following in your project's CSS file: 
+
+```{css}
+.rpivotTable
+    {
+    overflow-x: auto;
+    overflow-y: auto;
+    }
+```
+
+This will ensure that the pivot table has scrollbars if its content is too tall or wide for its display area.

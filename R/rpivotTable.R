@@ -4,19 +4,20 @@
 #' htmlwidget.
 #'
 #' @param data data.frame or data.table (R>=1.9.6 for safety) with data to use in the pivot table
-#' @param rows String name of the column in the data.frame to prepopulate
+#' @param rows String or Array of Strings name(s) of the column(s) in the data.frame to prepopulate
 #'              the \strong{rows} of the pivot table.
-#' @param cols String name of the column in the data.frame to prepopulate
+#' @param cols String or Array of Strings name(s) of the column(s) in the data.frame to prepopulate
 #'              the \strong{columns} of the pivot table.
 #' @param aggregatorName String name of the pivottable.js aggregator to prepopulate the pivot table.
-#' @param vals String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).
-#' @param rendererName List name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
-#' @param sorter String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
+#' @param vals String or Array of Strings name(s) of the column(s) in the data.frame to use with \code{aggregatorName}. Must be additive (i.e., a number).
+#' @param rendererName String name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
+#' @param rendererOptions List of \href{https://github.com/nicolaskruchten/pivottable/wiki/Renderers}{options} passed to the renderers.
+#' @param sorters String this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 #'              It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).
 #' @param inclusions List this optional parameter allows to filter the members of a particular dimension "by inclusion".
 #'              Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
 #'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
-#' @param exclusions String this optional parameter allows to filter the members of a particular dimension "by exclusion".
+#' @param exclusions List this optional parameter allows to filter the members of a particular dimension "by exclusion".
 #'              Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions=list(Class="Crew")`.
 #'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
 #' @param locale \code{character} of locale to use.  Valid locale options are
@@ -40,7 +41,7 @@
 #' @param height height parameter
 #' @param elementId String valid CSS selector id for the rpivotTable container.
 #'
-#' @param ... list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
+#' @param ... List other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 #'            can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.
 #'            A further example of parameter is onRefresh. This parameters (shiny-only) introduces a JS function that allows to get back server side the list of parameters selected by the user.
 #'            An example is: onRefresh=htmlwidgets::JS("function(config) { Shiny.onInputChange('myPivotData', config); }")
@@ -99,7 +100,8 @@ rpivotTable <- function(
     aggregatorName = NULL,
     vals = NULL,
     rendererName = NULL,
-    sorter = NULL,
+    rendererOptions = NULL,
+    sorters = NULL,
     exclusions = NULL,
     inclusions = NULL,
     locale = "en",
@@ -123,7 +125,7 @@ rpivotTable <- function(
       aggregatorName = aggregatorName,
       vals = vals,
       rendererName = rendererName,
-      sorter = sorter,
+      sorters = sorters,
       ...
     )
 
@@ -136,8 +138,9 @@ rpivotTable <- function(
       }
       , params
     )
-    # exlusions & inclusions need to be "excluded" from auto_boxing
+    # rendererOptions, exlusions & inclusions need to be "excluded" from auto_boxing
     par <- list(
+           rendererOptions = rendererOptions,
            exclusions = exclusions,
            inclusions = inclusions
          )
