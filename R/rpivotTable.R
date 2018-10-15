@@ -4,12 +4,12 @@
 #' htmlwidget.
 #'
 #' @param data data.frame or data.table (R>=1.9.6 for safety) with data to use in the pivot table
-#' @param rows String name of the column in the data.frame to prepopulate
+#' @param rows String or Array of Strings name(s) of the column(s) in the data.frame to prepopulate
 #'              the \strong{rows} of the pivot table.
-#' @param cols String name of the column in the data.frame to prepopulate
+#' @param cols String or Array of Strings name(s) of the column(s) in the data.frame to prepopulate
 #'              the \strong{columns} of the pivot table.
 #' @param aggregatorName String name of the pivottable.js aggregator to prepopulate the pivot table.
-#' @param vals String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).
+#' @param vals String or Array of Strings name(s) of the column(s) in the data.frame to use with \code{aggregatorName}. Must be additive (i.e., a number).
 #' @param rendererName String name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
 #' @param rendererOptions List of \href{https://github.com/nicolaskruchten/pivottable/wiki/Renderers}{options} passed to the renderers.
 #' @param sorters String this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
