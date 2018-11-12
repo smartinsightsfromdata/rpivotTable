@@ -10,6 +10,7 @@
 #'              the \strong{columns} of the pivot table.
 #' @param aggregatorName String name of the pivottable.js aggregator to prepopulate the pivot table.
 #' @param vals String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).
+#' @param rendererLibraries A vector containing one or more of "core", "D3", "C3", "plotly", "gchart", "export", "subtotals"
 #' @param rendererName List name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
 #' @param sorter String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 #'              It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).
@@ -35,7 +36,7 @@
 #'            \item{tr}
 #'            \item{zh}
 #'         }
-#' @param subtotals Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}. Using this parameter will set all renderer names to the english locale.
+#' @param subtotals [DEPRICATED] Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}. Using this parameter will set all renderer names to the english locale.
 #' @param width width parameter
 #' @param height height parameter
 #' @param elementId String valid CSS selector id for the rpivotTable container.
@@ -98,6 +99,7 @@ rpivotTable <- function(
     cols = NULL,
     aggregatorName = NULL,
     vals = NULL,
+    rendererLibraries = c("core", "D3", "C3"),
     rendererName = NULL,
     sorter = NULL,
     exclusions = NULL,
@@ -112,6 +114,13 @@ rpivotTable <- function(
   # check for data.frame, data.table, or array
   if( length(intersect(class(data),c("data.frame", "data.table", "table","structable", "ftable" ))) == 0 ) {
     stop( "data should be a data.frame, data.table, or table", call.=F)
+  }
+
+  if( sum(rendererLibraries %in% c("core", "D3", "C3", "plotly", "gchart", "export", "subtotals")) != length(rendererLibraries)) {
+    stop( "rendererLibraries should be one or more of 'core', 'D3', 'C3', 'plotly', 'gchart', 'export', 'subtotals'", call.=F)
+  }
+  if (subtotals) {
+    rendererLibraries <- c(rendererLibraries, "subtotals")
   }
 
   #convert table to data.frame
@@ -151,7 +160,7 @@ rpivotTable <- function(
       data = data,
       params = params,
       locale = locale,
-      subtotals = subtotals
+      rendererLibraries = rendererLibraries
     )
 
     htmlwidgets::createWidget(

@@ -45,9 +45,19 @@ test_that("parameters handled correctly",{
     rpivotTable(data.frame(),vals="aval")$x$params$vals[[1]]
     ,"aval"
   )
+
   expect_identical(
-    rpivotTable(data.frame(),subtotals = TRUE)$x$subtotals
-    ,TRUE
+    rpivotTable(data.frame(),rendererLibraries=c("core"),subtotals = TRUE)$x$rendererLibraries
+    ,c("core","subtotals")
+  )
+
+  expect_match(
+    rpivotTable(data.frame(),rendererLibraries=c("core"))$x$rendererLibraries[[1]]
+    ,"core"
+  )
+  expect_identical(
+    rpivotTable(data.frame(),rendererLibraries=c("core", "plotly", "export"))$x$rendererLibraries
+    ,c("core", "plotly", "export")
   )
 })
 
