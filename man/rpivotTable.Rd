@@ -22,6 +22,8 @@ the \strong{columns} of the pivot table.}
 
 \item{vals}{String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).}
 
+\item{rendererLibraries}{One or more of the following renderers: core, D3, C3, plotly, gchart, exports, subtotals}
+
 \item{rendererName}{List name of the renderer selected, e.g. Table, Heatmap, Treemap etc.}
 
 \item{sorter}{String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
@@ -52,7 +54,7 @@ Please note that this only pre-selects the visible filter(s) on the pivot table:
    \item{zh}
 }}
 
-\item{subtotals}{Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}. Using this parameter will set all renderer names to the english locale.}
+\item{subtotals}{[DEPRICATED] Logical this optional parameter allows use of the pivottable \href{https://github.com/nagarajanchinnasamy/pivottable-subtotal-renderer}{subtotal plugin}. Using this parameter will set all renderer names to the english locale.}
 
 \item{...}{list other \href{https://github.com/nicolaskruchten/pivottable/wiki/Parameters}{parameters} that
 can be passed to \code{pivotUI}. See Nicolas's Wiki for more details.

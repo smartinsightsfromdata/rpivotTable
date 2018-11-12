@@ -19,6 +19,10 @@ dependencies:
   version: 3.5.5
   src: htmlwidgets/lib/d3
   script: d3.v3.min.js
+- name: plotly
+  version: 1.42.5
+  src: htmlwidgets/lib/plotly
+  script: plotly.min.js
 - name: pivottable
   version: 2.19.0
   src: htmlwidgets/lib/pivottable
@@ -27,6 +31,9 @@ dependencies:
     - pivot.min.js
     - d3_renderers.min.js
     - c3_renderers.min.js
+    - plotly_renderers.min.js
+    - gchart_renderers.min.js
+    - export_renderers.min.js
     - pivot.cs.min.js
     - pivot.da.min.js
     - pivot.de.min.js
