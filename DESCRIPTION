@@ -1,7 +1,7 @@
 Package: rpivotTable
 Title: Build Powerful Pivot Tables and Dynamically Slice & Dice your Data
 Date: 2018-01-29
-Version: 0.3.0
+Version: 0.3.1002
 Authors@R: c(
     person("Enzo", "Martoglio", role = c("aut", "cre"),  email = "enzo@smartinsightsfromdata.com"),
     person("Nicolas", "Kruchten", role = c("ctb", "cph"),  email = "nicolas@kruchten.com"),
