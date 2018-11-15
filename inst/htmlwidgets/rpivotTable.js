@@ -34,6 +34,13 @@ HTMLWidgets.widget({
         x.params.dataClass = $.pivotUtilities.SubtotalPivotData;
       }
 
+      if (Array.isArray(x.params.aggregators) && x.params.aggregators.length == 1) {
+        x.params.aggregators = Function('"use strict";return (' + x.params.aggregators[0] + ')')()
+      }
+      if (Array.isArray(x.params.renderers) && x.params.renderers.length == 1) {
+        x.params.renderers = Function('"use strict";return (' + x.params.renderers[0] + ')')()
+      }
+
       $('#'+el.id).pivotUI(x.data, x.params, true, x.locale);
     }
 });
