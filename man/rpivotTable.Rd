@@ -5,7 +5,7 @@
 \title{pivottable.js in R}
 \usage{
 rpivotTable(data, rows = NULL, cols = NULL, aggregatorName = NULL,
-  vals = NULL, rendererName = NULL, sorter = NULL, exclusions = NULL,
+  vals = NULL, rendererName = NULL, sorters = NULL, exclusions = NULL,
   inclusions = NULL, locale = "en", subtotals = FALSE, ..., width = 800,
   height = 600, elementId = NULL)
 }
@@ -24,8 +24,9 @@ the \strong{columns} of the pivot table.}
 
 \item{rendererName}{List name of the renderer selected, e.g. Table, Heatmap, Treemap etc.}
 
-\item{sorter}{String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
-It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).}
+\item{sorters}{String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
+It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).
+Default value when argument is missing will populate sorters based on order of factor levels, if any.}
 
 \item{exclusions}{String this optional parameter allows to filter the members of a particular dimension "by exclusion".
 Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions=list(Class="Crew")`.
