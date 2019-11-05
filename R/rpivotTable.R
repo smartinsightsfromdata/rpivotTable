@@ -11,8 +11,9 @@
 #' @param aggregatorName String name of the pivottable.js aggregator to prepopulate the pivot table.
 #' @param vals String name of the column in the data.frame to use with \code{aggregatorName}. Must be additive (i.e a number).
 #' @param rendererName List name of the renderer selected, e.g. Table, Heatmap, Treemap etc.
-#' @param sorter String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
+#' @param sorters String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 #'              It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).
+#'              Default value when argument is missing will populate sorters based on order of factor levels, if any.
 #' @param inclusions List this optional parameter allows to filter the members of a particular dimension "by inclusion".
 #'              Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
 #'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
@@ -99,7 +100,7 @@ rpivotTable <- function(
     aggregatorName = NULL,
     vals = NULL,
     rendererName = NULL,
-    sorter = NULL,
+    sorters = NULL,
     exclusions = NULL,
     inclusions = NULL,
     locale = "en",
@@ -123,7 +124,6 @@ rpivotTable <- function(
       aggregatorName = aggregatorName,
       vals = vals,
       rendererName = rendererName,
-      sorter = sorter,
       ...
     )
 
@@ -136,10 +136,28 @@ rpivotTable <- function(
       }
       , params
     )
-    # exlusions & inclusions need to be "excluded" from auto_boxing
+
+    # make sorters arg based on factor levels
+    make_sorters <- function(data) {
+      if( !length(data) ) return(NULL)
+      f <- sapply(data, is.factor)
+      if( !sum(f) ) return(NULL)
+      fcols <- names(data)[f]
+      flvls <- sapply(fcols, function(fcol, data) levels(data[[fcol]]), data=data, simplify=FALSE)
+      jslvls <- sapply(flvls, function(lvls) paste(paste0("\"",lvls,"\""), collapse=", "))
+      sorter <- sprintf("if (attr == \"%s\") { return sortAs([%s]); }", fcols, jslvls)
+      sprintf("function(attr) {\nvar sortAs = $.pivotUtilities.sortAs;\n%s\n}", paste(sorter, collapse="\n"))
+    }
+    # only when not explicitly provided
+    if( missing(sorters) ) {
+      sorters <- list(make_sorters(data))
+    }
+
+    # exlusions, inclusions and sorters need to be "excluded" from auto_boxing
     par <- list(
            exclusions = exclusions,
-           inclusions = inclusions
+           inclusions = inclusions,
+           sorters = sorters
          )
 
     params <- c(params, par)
