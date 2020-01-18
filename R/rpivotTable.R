@@ -90,9 +90,45 @@
 #'
 #' @import htmlwidgets
 #'
+#' @rdname rpivotTable
 #' @export
-
 rpivotTable <- function(
+  data,
+  rows = NULL,
+  cols = NULL,
+  aggregatorName = NULL,
+  vals = NULL,
+  rendererName = NULL,
+  sorter = NULL,
+  exclusions = NULL,
+  inclusions = NULL,
+  locale = "en",
+  subtotals = FALSE,
+  ...,
+  width = 800,
+  height = 600,
+  elementId = NULL
+) {
+  UseMethod("rpivotTable", data)  
+}
+
+#' @export
+rpivotTable.data.frame <- function(data, ...) {
+  .rpivotTable(data = data, ...)
+}
+
+#' @export
+rpivotTable.table <- function(data, ...) {
+  .rpivotTable(data = data, ...)
+}
+
+#' @export
+rpivotTable.ftable <- function(data, ...) {
+  .rpivotTable(data = data, ...)
+}
+
+
+.rpivotTable <- function(
     data,
     rows = NULL,
     cols = NULL,
@@ -109,13 +145,9 @@ rpivotTable <- function(
     height = 600,
     elementId = NULL
 ) {
-  # check for data.frame, data.table, or array
-  if( length(intersect(class(data),c("data.frame", "data.table", "table","structable", "ftable" ))) == 0 ) {
-    stop( "data should be a data.frame, data.table, or table", call.=F)
-  }
 
   #convert table to data.frame
-  if( length(intersect(c("table","structable", "ftable"), class(data))) > 0 ) data <- as.data.frame( data )
+  if( length(intersect(c("table","ftable"), class(data))) > 0 ) data <- as.data.frame( data )
 
     params <- list(
       rows = rows,
