@@ -20,7 +20,7 @@ dependencies:
   src: htmlwidgets/lib/d3
   script: d3.v3.min.js
 - name: pivottable
-  version: 2.19.0
+  version: 2.23.0
   src: htmlwidgets/lib/pivottable
   stylesheet: pivot.min.css
   script:
