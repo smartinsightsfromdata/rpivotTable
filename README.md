@@ -1,9 +1,3 @@
-### Why this fork?
-
-I want to use the showUI functionality of pivottables v2.21, but rpivotTable was still on v2.19. Seems to work!
-
-Original readme:
-
 ### rpivotTable:  pivottable for R
 
 The rpivotTable package is an R [htmlwidget](http://htmlwidgets.org)  visualization library built around the Javascript [pivottable](http://nicolas.kruchten.com/pivottable/examples/)  library.
