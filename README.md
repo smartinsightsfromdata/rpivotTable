@@ -1,6 +1,6 @@
 ### Why this fork?
 
-I want to use the showUI functionality of pivottables v2.21, but rpivotTable was still on v2.19. It isn't working yet though...
+I want to use the showUI functionality of pivottables v2.21, but rpivotTable was still on v2.19. Seems to works!
 
 Original readme:
 
