@@ -14,10 +14,10 @@
 #' @param sorter String name this allows to implement a javascript function to specify the ad hoc sorting of certain values. See vignette for an example.
 #'              It is especially useful with time divisions like days of the week or months of the year (where the alphabetical order does not work).
 #' @param inclusions List this optional parameter allows to filter the members of a particular dimension "by inclusion".
-#'              Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions=list(Class="Crew")`.
+#'              Using the 'Titanic' example, to display only the "Crew" member in the "Class" dimension, it is convenient to filter by inclusion using `inclusions = list(Class = list("Crew"))`.
 #'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
 #' @param exclusions String this optional parameter allows to filter the members of a particular dimension "by exclusion".
-#'              Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions=list(Class="Crew")`.
+#'              Using the 'Titanic' example, to display only the "1st", "2nd" and "3rd" members in the "Class" dimension, it is convenient to filter by exclusion using `exclusions = list(Class = list("Crew"))`.
 #'              Please note that this only pre-selects the visible filter(s) on the pivot table: the other dimension members are still availabe for selection if needed.
 #' @param locale \code{character} of locale to use.  Valid locale options are
 #'         \itemize{
@@ -80,7 +80,7 @@
 #' cols = c("Class","Sex"),
 #' aggregatorName = "Sum as Fraction of Columns",
 #' inclusions = list( Survived = list("Yes")),
-#' exclusions= list( Class = list( "Crew")),
+#' exclusions = list( Class = list( "Crew")),
 #' vals = "Freq",
 #' rendererName = "Table Barchart"
 #' )
